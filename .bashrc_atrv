@@ -1,0 +1,5 @@
+source_if_exists /etc/bash_completion
+source_if_exists ~/.bashrc_ros
+source_if_exists ~/.bashrc_git
+source_if_exists ~/.bashrc_local
+source_if_exists ~/.bashrc_shared

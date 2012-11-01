@@ -13,11 +13,15 @@
 # All of my settings are in this directory prefix
 MINE=~/.dan
 
+source_if_exists() {
+    if [ -f "$1" ]; then
+        source "$1"
+    fi
+}
+
 # OS Specific Settings
 # OSX is in .bashrc.Darwin and Linux in .bashrc.Linux
-if [ -f $MINE/.bashrc.`uname` ]; then
-    source $MINE/.bashrc.`uname`
-fi
+source_if_exists $MINE/.bashrc_`uname`
 
 # Global Settings - These seem to work everywhere so far
 alias ll='ls -al'
@@ -29,19 +33,17 @@ alias dl="$MINE/scripts/dl"
 alias rm='rm -i'
 
 # Vim editor settings
-source $MINE/.bashrc.vim
+source_if_exists $MINE/.bashrc_vim
 # Tmux settings
 alias tmux="tmux -f$MINE/.tmux.conf"
 
 # Import CLI color names
 # Do this first, so that Host specific settings can get at it before we set the fancy terminal
-source $MINE/.bashrc.colors
+source_if_exists $MINE/.bashrc_colors
 
 # Machine Specific Settings
 # If hostname is "robot-lab3" then put that machines settings in .bashrc.robot-lab3
-if [ -f $MINE/.bashrc.`hostname` ]; then
-   source $MINE/.bashrc.`hostname`
-fi
+source_if_exists $MINE/.bashrc_`hostname`
 
 # Fancy Terminal with pretty colors
 # Note that the git terminal stuff is looking for '\n$ ' at the end of the string so
@@ -49,5 +51,5 @@ fi
 export PS1="\n${USRLOCID}\u@\h ${TIMESTMP}\d \@\n${PATHLINE}\w${NONE}\n$ "
 
 # Super Git Terminal Mode
-source $MINE/.bashrc.git
+source_if_exists $MINE/.bashrc_git
 
