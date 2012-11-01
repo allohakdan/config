@@ -1,0 +1,7 @@
+USRLOCID=${BROWN}
+TIMESTMP=${GREEN}
+source /opt/ros/diamondback/setup.bash
+if [ -f /home/dan/.rospath ]; then
+  source /home/dan/.rospath
+fi
+

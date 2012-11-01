@@ -1,0 +1,5 @@
+# NASA
+export PRINTER='ap185'
+alias cdhd='cd /usr/local/home/allohak'
+alias landscape='a2ps -r --columns=1 --chars-per-line=160'
+

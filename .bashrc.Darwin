@@ -1,0 +1,19 @@
+alias du='du -h'
+alias dush='du -sh'
+alias df='df -h'
+alias ls='ls -hFG'
+
+# MacPorts Installer addition on 2009-08-12_at_23:12:16: 
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# MacPorts Installer addition on 2009-08-12_at_23:12:16: 
+export MANPATH=/opt/local/share/man:$MANPATH
+    
+# Support Exuberant Ctags (default location)
+export PATH=/usr/local/bin:$PATH
+
+# Fix for using sshfs binary in macfusion while its broken
+# use commands
+# $ mkdir /Volumes/tonido
+# $ sshfs dan@danbrooks.tonidoid.com:/media/usb0 -p 443
+# $ umount /Volumes/tonido
+alias sshfs='/Applications/Macfusion.app/Contents/Plugins/sshfs.mfplugin/Contents/Resources/sshfs-static'

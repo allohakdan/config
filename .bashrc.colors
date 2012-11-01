@@ -1,0 +1,49 @@
+
+# \a an ASCII bell character (07)
+# \d the date in “Weekday Month Date” format (e.g., “Tue May 26?)
+# \e an ASCII escape character (033)
+# \h the hostname up to the first `.’
+# \H the hostname
+# \n newline
+# \r carriage return
+# \s the name of the shell, the basename of $0 (the portion following the final slash)
+# \t the current time in 24-hour HH:MM:SS format
+# \T the current time in 12-hour HH:MM:SS format
+# \@ the current time in 12-hour am/pm format
+# \u the username of the current user
+# \v the version of bash (e.g., 2.00)
+# \V the release of bash, version + patchlevel (e.g., 2.00.0)
+# \w the current working directory
+# \W the basename of the current working direc-tory
+# \! the history number of this command
+# \# the command number of this command
+# \$ if the effective UID is 0, a #, otherwise a $
+# \nnn the character corresponding to the octal number nnn
+# \\ a backslash
+# \[ begin a sequence of non-printing characters, which could be used to embed a terminal con-trol sequence into the prompt
+# \] end a sequence of non-printing characters
+
+BLACK='\[\033[0;30m\]'
+BLUE='\[\033[0;34m\]'
+GREEN='\[\033[0;32m\]'
+CYAN='\[\033[0;36m\]'
+RED='\[\033[0;31m\]'
+PURPLE='\[\033[0;35m\]'
+BROWN='\[\033[0;33m\]'
+LIGHTGREY='\[\033[0;37m\]'
+DARKGREY='\[\033[1;30m\]'
+LIGHTBLUE='\[\033[1;34m\]'
+LIGHTGREEN='\[\033[1;32m\]'
+LIGHTCYAN='\[\033[1;36m\]'
+LIGHTRED='\[\033[1;31m\]'
+LIGHTPURPLE='\[\033[1;35m\]'
+YELLOW='\[\033[1;33m\]'
+WHITE='\[\033[1;37m\]'
+NONE='\[\033[0m\]'
+
+# Defaults
+USRLOCID=${GREEN}
+TIMESTMP=${PURPLE}
+PATHLINE=${LIGHTBLUE}
+
+

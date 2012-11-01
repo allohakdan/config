@@ -1,0 +1,12 @@
+export PRINTER='Lab'
+#source /opt/ros/diamondback/setup.bash
+#if [ -f /home/dan/.rospath ]; then
+#  source /home/dan/.rospath
+#fi
+
+USRLOCID=${GREEN}
+TIMESTMP=${PURPLE}
+PATHLINE=${LIGHTBLUE}
+
+export GPG_TTY='tty'
+export LD_LIBRARY_PATH=/usr/local/lib
