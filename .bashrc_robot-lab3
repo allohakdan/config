@@ -9,13 +9,23 @@ TIMESTMP=${PURPLE}
 PATHLINE=${LIGHTBLUE}
 
 # Sets the ROS_MASTER_URI variable approprately
-# Example 'set-ros-master atrv.lan'
-set-ros-master () {
-    export ROS_MASTER_URI=http://$1:11311
+# Example 'ros-master set atrv.lan'
+ros-master () {
+    if [ $# -eq 0 ] ; then
+        echo $ROS_MASTER_URI
+    elif [ $1 = "set" ] && [ $# -eq 2 ] ; then
+        export ROS_MASTER_URI=http://$2:11311
+    else
+        echo "USAGE:"
+        echo "ros-master                    displays the ROS_MASTER_URI"
+        echo "ros-master set <address>      sets the rosmaster address"
+    fi
 }
+
+alias chdan='source ~/.dan/.bashrc'
 
 export GPG_TTY='tty'
 export LD_LIBRARY_PATH=/usr/local/lib
 source /opt/ros/fuerte/setup.bash 
-export ROS_PACKAGE_PATH=~/Source/subtle:$ROS_PACKAGE_PATH
+export ROS_PACKAGE_PATH=~/Source/subtle:~/tmp/009_jrodom:$ROS_PACKAGE_PATH
 export ROS_PARALLEL_JOBS='-j -l8'
