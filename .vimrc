@@ -81,7 +81,7 @@ set title
 
 " store swap files away from the current directory
 set backup
-set backupdir=~/.dan/.vimbkup
+set backupdir=$VIMBKUPDIR
  
 " Printing options
 "set printdevice=ldp://129.63.16.182

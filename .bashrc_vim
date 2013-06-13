@@ -1,7 +1,15 @@
 alias vim="vim -u $MINE/.vimrc"
 export EDITOR=vim
+
 # Create the vim backup directory if it does not exist
 if [ ! -d $MINE/.vimbkup ]; then
   mkdir $MINE/.vimbkup
 fi
 
+# Set the location of the backup directory
+# To get our .gitconfig file to work, we have to temporarly
+# change our home directory location - see .bashrc_git.
+# This causes a problem when using vim to edit commit messages
+# because .vimrc sets the backup file to be in the .dan directory
+# inside the home directory. This fixes the glitch
+export VIMBKUPDIR=$MINE/.vimbkup

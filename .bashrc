@@ -13,6 +13,14 @@
 # All of my settings are in this directory prefix
 MINE=~/.dan
 
+# To get our .gitconfig file to work, we have to temporarly
+# change our home directory location - see .bashrc_git.
+# To preemptively avoid weirdness, such as with vim, 
+# fix the value of MINE even if HOME is wrong
+if [ ${HOME##*/} = ".dan" ]; then
+    MINE=$HOME
+fi
+
 source_if_exists() {
     if [ -f "$1" ]; then
         source "$1"
