@@ -8,7 +8,7 @@ echo "alias chdan='source ~/.dan/.bashrc'" >> ~/.bashrc
 
 echo "Installing dl script"
 cd /usr/local/bin
-sudo wget https://raw.github.com/allohakdan/dl/master/dl
+sudo -E wget https://raw.github.com/allohakdan/dl/master/dl
 sudo chmod 755 dl
 
 
