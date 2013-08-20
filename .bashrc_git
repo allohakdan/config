@@ -15,4 +15,4 @@ fi
 # Specify that my gitconfig file is in the .dan directory using this awesome hack
 # Credit to Marco Ceppi, Stackoverflow aug29 '10
 # Basically, tell git you home directory is where the file is!
-alias git="HOME=/home/$USER/.dan/ git"
+alias git="HOME=$HOME/.dan/ git"
