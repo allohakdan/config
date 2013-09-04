@@ -81,7 +81,7 @@ set title
 
 " store swap files away from the current directory
 set backup
-set backupdir=~/.dan/.vimbkup
+set backupdir=$VIMBKUPDIR
  
 " Printing options
 "set printdevice=ldp://129.63.16.182
@@ -179,7 +179,7 @@ else
     match OverLength /\%81v./
 "    au BufWinEnter * let w:m2=matchadd('ErrorMsg','\%>80v.\+', -1)
 endif
-
+set cc=80
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ SEARCHING
@@ -237,6 +237,7 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ TAB CONTROLS 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap ,t <Esc>:tabnew %<CR>
 " press <F2> and type file name to open it in a new tab 
 nnoremap <F2> :tabe 
 " Open a new blank tab by pressing <F3>

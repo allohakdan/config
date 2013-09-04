@@ -1,0 +1,13 @@
+[user]
+name = Dan Brooks
+email = mrdanbrooks@gmail.com
+[color]
+diff = auto
+status = auto
+branch = auto
+[core]
+editor = vim
+[alias]
+# Console gitview replacement
+lg = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+
