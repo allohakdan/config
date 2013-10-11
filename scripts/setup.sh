@@ -4,7 +4,7 @@ if [[ `uname` == "Linux" ]]; then
     sudo apt-get install git-core vim tmux ssh exuberant-ctags
 elif [[ `uname` == "Darwin" ]]; then
     # Test if at least these things are installed, python and vim report more then once...
-    if [[ `port installed | cut -d @ -f 1 | egrep -c "wget|tmux|python27|watch|htop|iftop|vim"` > 8 ]]; then
+    if [[ `port installed | cut -d @ -f 1 | egrep -c "wget|tmux|python27|watch|htop|iftop|vim"` > 7 ]]; then
         echo "Macport packages already installed, skipping"
     else
         echo "Installing wget,tmux,python,watch,htop,iftop,and vim from macports"
@@ -42,4 +42,5 @@ if [[ `ls ~/.vim/plugin | egrep -c "NERD_tree.vim|gnupg.vim|taglist.vim|diffchan
     echo "vim scripts already installed, skipping"
 else
     echo "Installing vim scripts"
+    cp ~/.dan/scripts/setup/.vim/plugin/* ~/.vim/plugin/
 fi
