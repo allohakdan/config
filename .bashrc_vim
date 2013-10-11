@@ -1,4 +1,9 @@
-alias vim="vim -u $MINE/.vimrc"
+if [ ! -d /opt/local/bin/vim ]; then
+    # Use macports version if you have it
+    alias vim="/opt/local/bin/vim -u $MINE/.vimrc"
+else
+    alias vim="vim -u $MINE/.vimrc"
+fi
 export EDITOR=vim
 
 # Create the vim backup directory if it does not exist
