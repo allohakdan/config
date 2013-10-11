@@ -37,7 +37,7 @@ alias la='ls -a'
 alias lx='ls -lXB'
 alias cd..='cd ..'
 alias grep='grep -n --color=always'
-alias dl="$MINE/scripts/dl"
+#alias dl="$MINE/scripts/dl"
 alias rm='rm -i'
 
 # Vim editor settings
