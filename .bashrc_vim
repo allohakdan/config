@@ -1,4 +1,4 @@
-if [ ! -d /opt/local/bin/vim ]; then
+if [ -a "/opt/local/bin/vim" ]; then
     # Use macports version if you have it
     alias vim="/opt/local/bin/vim -u $MINE/.vimrc"
 else

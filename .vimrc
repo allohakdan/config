@@ -285,7 +285,7 @@ if version >= 700
 ""For OSX - we need to specify where GPG is at
 let uname = substitute(system("uname"),"\n","","g")
 if uname == "Darwin"
-    let g:GPGExecutable = "/usr/local/bin/gpg"
+    let g:GPGExecutable = "/opt/local/bin/gpg"
 endif
 let g:GPGPreferSymmetric = 1
 let g:GPGPreferArmor = 1
