@@ -9,6 +9,7 @@ elif [[ `uname` == "Darwin" ]]; then
     else
         echo "Installing wget,tmux,python,watch,htop,iftop,and vim from macports"
         sudo port install wget tmux python27 watch htop iftop vim
+        sudo port select --set python python27
     fi
 fi
 
