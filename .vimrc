@@ -93,10 +93,7 @@ else
     " Normal Path
     let s:tval=$HOME."/.dan/.vimbkup"
 endif
-echo s:tval
 let &backupdir=s:tval 
-" let s:tmpval=$HOME."/.dan/.vimbkup"
-" let &backupdir=s:tmpval
 
 " Printing options
 "set printdevice=ldp://129.63.16.182
