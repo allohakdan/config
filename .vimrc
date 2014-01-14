@@ -82,11 +82,22 @@ set title
 " store swap files away from the current directory
 set backup
 " set backupdir=$VIMBKUPDIR 
-let s:tmpval=$HOME."/.dan/.vimbkup"
-let &backupdir=s:tmpval
-" echo s:tmpval
-" echo &backupdir
- 
+"" Our chdan git hack involves telling git that our home directory is
+"" the .dan directory. Check to see if we are in that directory and only
+"" append .vimbkup if we are already in the home directory. Otherwise, the
+"" path from the home directory should be ~/.dan/.vimbkup
+if (match($HOME,"/.dan/") != -1)
+    " Git Hack
+    let s:tval=$HOME.".vimbkup"
+else
+    " Normal Path
+    let s:tval=$HOME."/.dan/.vimbkup"
+endif
+echo s:tval
+let &backupdir=s:tval 
+" let s:tmpval=$HOME."/.dan/.vimbkup"
+" let &backupdir=s:tmpval
+
 " Printing options
 "set printdevice=ldp://129.63.16.182
 set printoptions=syntax:n,bottom:10pc 
