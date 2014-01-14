@@ -51,7 +51,10 @@ source_if_exists $MINE/.bashrc_colors
 
 # Machine Specific Settings
 # If hostname is "robot-lab3" then put that machines settings in .bashrc.robot-lab3
-source_if_exists $MINE/.bashrc_`hostname`
+# source_if_exists $MINE/.bashrc_`hostname`
+# edit: it is kind of annoying when you get assigned a new hostname, so I wrote a 
+# function that lets me get it using scutil in osx, but still hostname in linux
+source_if_exists $MINE/.bashrc_$(get_machine_name)
 
 # Fancy Terminal with pretty colors
 # Note that the git terminal stuff is looking for '\n$ ' at the end of the string so

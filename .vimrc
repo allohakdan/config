@@ -177,7 +177,7 @@ set foldtext=getline(v:foldstart)
 nnoremap <F9> [{V%zf <CR>
 autocmd BufRead *.py set foldmethod=indent
 
-highlight Folded guifg=reverse guibg=NONE
+" highlight Folded guifg=reverse guibg=NONE
 highlight Folded ctermfg=darkblue ctermbg=NONE
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

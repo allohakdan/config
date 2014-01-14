@@ -1,4 +1,5 @@
 alias chdan='source ~/.dan/.bashrc'
-
 export GPG_TTY='tty'
 export ROS_PARALLEL_JOBS='-j -l8'
+
+echo "Welcome To Icecube!"
