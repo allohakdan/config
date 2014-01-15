@@ -294,11 +294,13 @@ endif
 
 """ GNUPG PLUGIN OPTIONS
 if version >= 700
+" Fix for finding which GPG assuming only one is installed
+let g:GPGExecutable=system("which gpg")[:-2]
 ""For OSX - we need to specify where GPG is at
-let uname = substitute(system("uname"),"\n","","g")
-if uname == "Darwin"
-    let g:GPGExecutable = "/opt/local/bin/gpg"
-endif
+" let uname = substitute(system("uname"),"\n","","g")
+" if uname == "Darwin"
+"     let g:GPGExecutable = "/opt/local/bin/gpg"
+" endif
 let g:GPGPreferSymmetric = 1
 let g:GPGPreferArmor = 1
 endif
