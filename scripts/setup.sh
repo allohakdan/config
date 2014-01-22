@@ -4,11 +4,11 @@ if [[ `uname` == "Linux" ]]; then
     sudo apt-get install git-core vim tmux ssh exuberant-ctags
 elif [[ `uname` == "Darwin" ]]; then
     # Test if at least these things are installed, python and vim report more then once...
-    if [[ `port installed | cut -d @ -f 1 | egrep -c "wget|tmux|python27|watch|htop|iftop|vim"` -ge 7 ]]; then
+    if [[ `port installed | cut -d @ -f 1 | egrep -c "wget|tmux|python27|watch|htop|iftop|vim|gnupg"` -ge 8 ]]; then
         echo "Macport packages already installed, skipping"
     else
         echo "Installing wget,tmux,python,watch,htop,iftop,and vim from macports"
-        sudo port install wget tmux python27 watch htop iftop vim
+        sudo port install wget tmux python27 watch htop iftop vim gnupg
         sudo port select --set python python27
     fi
 fi
