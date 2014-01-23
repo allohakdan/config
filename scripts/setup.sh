@@ -45,3 +45,6 @@ else
     echo "Installing vim scripts"
     cp ~/.dan/scripts/setup/.vim/plugin/* ~/.vim/plugin/
 fi
+
+# Install SSH Configuration
+~/.dan/scripts/setup/ssh_config.sh
