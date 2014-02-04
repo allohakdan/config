@@ -284,7 +284,7 @@ let g:miniBufExplModSelTarget = 1
 """ Enable Vertical Mode, set width
 "let g:miniBufExplVSplit = 30
 """ Open Automatically when this many buffers are present (default 2)
-"let g:miniBufExplorerMoreThanOne=0
+let g:miniBufExplorerMoreThanOne=100
 
 """ NERDTREE Settings
 if version >= 700
