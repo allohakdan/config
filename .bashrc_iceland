@@ -1,0 +1,3 @@
+echo "Welcome to Iceland!"
+PATH=/Developer/adt-bundle-mac-x86_64-20131030/sdk/platform-tools:$PATH
+alias mvim='mvim -u /Users/dan/.dan/.vimrc'
