@@ -20,6 +20,7 @@ MINE=~/.dan
 if [ ${HOME##*/} = ".dan" ]; then
     MINE=$HOME
 fi
+export MINE=$MINE
 
 source_if_exists() {
     if [ -f "$1" ]; then
@@ -44,6 +45,9 @@ alias rm='rm -i'
 source_if_exists $MINE/.bashrc_vim
 # Tmux settings
 alias tmux="tmux -f$MINE/.tmux.conf"
+# SSH Settings
+# alias ssh="echo "hi";ssh -F $MINE/.ssh/config"
+alias ssh="$MINE/scripts/ssh"
 
 # Import CLI color names
 # Do this first, so that Host specific settings can get at it before we set the fancy terminal
