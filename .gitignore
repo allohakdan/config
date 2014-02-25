@@ -1,3 +1,8 @@
 .DS_Store
 .viminfo
 .vimbkup
+id_rsa.code*
+id_rsa.work*
+id_rsa.home*
+*.swp
+known_hosts
