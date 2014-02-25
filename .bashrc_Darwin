@@ -16,7 +16,7 @@ export PATH=/usr/local/bin:$PATH
 # $ mkdir /Volumes/tonido
 # $ sshfs dan@danbrooks.tonidoid.com:/media/usb0 -p 443
 # $ umount /Volumes/tonido
-alias sshfs='/Applications/Macfusion.app/Contents/Plugins/sshfs.mfplugin/Contents/Resources/sshfs-static'
+# alias sshfs='/Applications/Macfusion.app/Contents/Plugins/sshfs.mfplugin/Contents/Resources/sshfs-static'
 
 get_machine_name() {
     echo `scutil --get ComputerName`

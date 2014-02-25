@@ -31,20 +31,21 @@ else
 fi
 
 # Install Vim Scripts
-if [ ! -d ~/.vim ]; then
-    echo "Creating .vim directory"
-    mkdir ~/.vim
-fi
-if [ ! -d ~/.vim/plugin ]; then
-    echo "Creating .vim/plugin directory"
-    mkdir ~/.vim/plugin
-fi
-if [[ `ls ~/.vim/plugin | egrep -c "NERD_tree.vim|gnupg.vim|taglist.vim|diffchanges.vim|minibufexpl.vim"` == 5 ]]; then
-    echo "vim scripts already installed, skipping"
-else
-    echo "Installing vim scripts"
-    cp ~/.dan/scripts/setup/.vim/plugin/* ~/.vim/plugin/
-fi
+# These are now housed in the .dan directory
+# if [ ! -d ~/.vim ]; then
+#     echo "Creating .vim directory"
+#     mkdir ~/.vim
+# fi
+# if [ ! -d ~/.vim/plugin ]; then
+#     echo "Creating .vim/plugin directory"
+#     mkdir ~/.vim/plugin
+# fi
+# if [[ `ls ~/.vim/plugin | egrep -c "NERD_tree.vim|gnupg.vim|taglist.vim|diffchanges.vim|minibufexpl.vim"` == 5 ]]; then
+#     echo "vim scripts already installed, skipping"
+# else
+#     echo "Installing vim scripts"
+#     cp ~/.dan/scripts/setup/.vim/plugin/* ~/.vim/plugin/
+# fi
 
 # Install SSH Configuration
 ~/.dan/scripts/setup/ssh_config.sh

@@ -1,6 +1,9 @@
 "Dan Brooks
 "
 source /usr/share/vim/vimrc
+" Add our plugins directory to vims runtimepath
+let &runtimepath.=',~/.dan/.vim'
+
 "v16
 "For use with the MiniBufExplorer, Taglist, Diffchanges, GnuPG, and NERDTree plugins 
 "
