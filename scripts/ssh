@@ -1,2 +1,4 @@
 #!/bin/sh
-/usr/bin/ssh -F $MINE/.ssh/config $@
+USER_HOME=$(eval echo ~${USER})
+# /usr/bin/ssh -F $MINE/.ssh/config $@
+/usr/bin/ssh -F $USER_HOME/.dan/.ssh/config $@
