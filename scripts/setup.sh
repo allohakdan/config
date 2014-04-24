@@ -1,10 +1,10 @@
 #!/bin/bash
 if [[ `uname` == "Linux" ]]; then
     echo "Installing git,vim,tmux,ssh from apt"
-    sudo apt-get install git-core vim tmux ssh exuberant-ctags
+    sudo apt-get install git-core vim tmux ssh exuberant-ctags pylint
 elif [[ `uname` == "Darwin" ]]; then
     # Test if at least these things are installed, python and vim report more then once...
-    if [[ `port installed | cut -d @ -f 1 | egrep -c "wget|tmux|python27|pylint27|watch|htop|iftop|vim|gnupg"` -ge 8 ]]; then
+    if [[ `port installed | cut -d @ -f 1 | egrep -c "wget|tmux|python27|pylint27|watch|htop|iftop|vim|gnupg"` -ge 9 ]]; then
         echo "Macport packages already installed, skipping"
     else
         echo "Installing wget,tmux,python,watch,htop,iftop,and vim from macports"
