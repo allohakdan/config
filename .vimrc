@@ -74,11 +74,17 @@ let &runtimepath.=',~/.dan/.vim'
 "v15 - initial support for GPG .gpg and .asc file editing
 "v16 - added support for building in a subdir 'build' for cmake
 "v17 - support for NERDTree
+"v18 - syntax checking via syntastic (Check command)
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ GENERAL OPTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" Execute pathogen - requres disabling options in sessions
+set sessionoptions-=options
+execute pathogen#infect('~/.dan/.vim/bundle/{}')
+
+
 """ place buffer name into window title
 set title
 
@@ -122,6 +128,15 @@ filetype plugin indent on   "This is needed for the tablist plugin
 
 "Change directory to whatever file you are currently editing
 autocmd BufEnter * lcd %:p:h
+
+" Syntax Checking Commands
+command Check SyntasticCheck
+" Don't let syntastic run on write
+let g:syntastic_mode_map = {'mode': 'passive'}
+let g:syntastic_check_on_wq = 0
+" Python - use pylint only, and only show errors
+let g:syntastic_python_pylint_args = "-E"
+let g:syntastic_python_checkers = ['pylint']
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
