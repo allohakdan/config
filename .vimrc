@@ -127,7 +127,8 @@ filetype plugin indent on   "This is needed for the tablist plugin
 " Ctrl-n will also give you word completion 
 
 "Change directory to whatever file you are currently editing
-autocmd BufEnter * lcd %:p:h
+"This does not work with git fugitive
+"autocmd BufEnter * lcd %:p:h
 
 " Syntax Checking Commands
 command Check SyntasticCheck
