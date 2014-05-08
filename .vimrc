@@ -143,13 +143,23 @@ let g:syntastic_python_checkers = ['pylint']
 " Fugitive - Specify custom git command compatible with chdan
 let g:fugitive_git_executable = 'HOME=$HOME/.dan/ git' 
 
+" Python support using supertab
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest ",preview
+
+" Use tab-complete for supertab!
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ USER INTERFACE OPTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set number " show line numbers
 set ruler  " show current position
 set showcmd
-set paste  " simple pasting
+
+" Useful for pasting but disables insert mode mappings
+"set paste  " simple pasting
 
 " enable syntax highlighting
 set syntax=on
