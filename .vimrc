@@ -301,7 +301,7 @@ nnoremap <silent> <F6> :TlistToggle<CR>
 "For OSX - we need to specify where CTags is at
 let uname = substitute(system("uname"),"\n","","g")
 if uname == "Darwin"
-    let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+    let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
 endif
 """ Tell tabs to stay shut unless im working in that file
 "let Tlist_File_Fold_Auto_Close = 1 
