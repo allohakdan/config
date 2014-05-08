@@ -352,6 +352,20 @@ nmap <silent><End> :call SmartEnd("n")<CR>
 imap <silent><End> <C-r>=SmartEnd("i")<CR>
 vmap <silent><End> <Esc>:call SmartEnd("v")<CR>
 
+" Python Fix for virtualenv so it can do code completion inside cwd
+" Auto adds this directories site-packages to the vim path.
+" It does not seem to conflict with other file types
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this,dict(__file__=activate_this))
+EOF
+
 
 "*********************************************************************
 "*********************************************************************
