@@ -289,24 +289,29 @@ nnoremap <silent> <F3> :tabnew <CR>
 " close current tab
 nnoremap <silent> <F4> :tabc <CR>
 
+let uname = substitute(system("uname"),"\n","","g")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ PLUGIN OPTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <silent> <F8> :NERDTreeToggle<CR>:TlistToggle<CR>
+" noremap <silent> <F8> :NERDTreeToggle<CR>:TlistToggle<CR>
 
 
 """ TAGLIST PLUGIN OPTIONS
 """ Map F6 key to toggle taglist
-nnoremap <silent> <F6> :TlistToggle<CR>
+" nnoremap <silent> <F6> :TlistToggle<CR>
 "For OSX - we need to specify where CTags is at
-let uname = substitute(system("uname"),"\n","","g")
-if uname == "Darwin"
-    let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
-endif
+" if uname == "Darwin"
+"     let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
+" endif
 """ Tell tabs to stay shut unless im working in that file
 "let Tlist_File_Fold_Auto_Close = 1 
 """ Show only the current file
 let Tlist_Show_One_File = 1
+
+""" TAGBAR (Replaces TAGLIST)
+nnoremap <silent> <F6> :TagbarToggle<CR>
+
+
 
 """ MINIBUFEXPLORER PLUGIN OPTIONS 
 """ Map F5 key to toggle MiniBufExplorer
