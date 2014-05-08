@@ -75,6 +75,7 @@ let &runtimepath.=',~/.dan/.vim'
 "v16 - added support for building in a subdir 'build' for cmake
 "v17 - support for NERDTree
 "v18 - syntax checking via syntastic (Check command)
+"v19 - Git Fugitive compatibility with chdan
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -139,6 +140,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_pylint_args = "-E"
 let g:syntastic_python_checkers = ['pylint']
 
+" Fugitive - Specify custom git command compatible with chdan
+let g:fugitive_git_executable = 'HOME=$HOME/.dan/ git' 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ USER INTERFACE OPTIONS
