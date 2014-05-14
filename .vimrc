@@ -128,6 +128,23 @@ filetype plugin indent on   "This is needed for the tablist plugin
 
 " Ctrl-n will also give you word completion 
 
+" Statusline always on
+set laststatus=2
+set statusline=%t       "tail of the filename
+set statusline+=%m      "modified flag
+" set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+" set statusline+=%{&ff}] "file format
+" set statusline+=%h      "help file flag
+" Fugitive status- normally shows [Git(master)] - reduces to just (master)
+set statusline+=\ %{substitute(substitute(fugitive#statusline(),'[Git','','g'),']','','g')}
+set statusline+=%r      "read only flag
+" set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+
+
 "Change directory to whatever file you are currently editing
 "This does not work with git fugitive
 "autocmd BufEnter * lcd %:p:h
