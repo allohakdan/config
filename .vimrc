@@ -136,9 +136,9 @@ set statusline+=%m      "modified flag
 " set statusline+=%{&ff}] "file format
 " set statusline+=%h      "help file flag
 " Fugitive status- normally shows [Git(master)] - reduces to just (master)
-" if exists('*fugitive')
-    set statusline+=\ %{exists('g:loaded_fugitive')?substitute(substitute(fugitive#statusline(),'[Git','','g'),']','','g'):''}
-" endif
+" Fix for not showing while commiting using '$ git commit' from command line
+" http://stackoverflow.com/questions/5983906/vim-conditionally-use-fugitivestatusline-function-in-vimrc 
+set statusline+=\ %{exists('g:loaded_fugitive')?substitute(substitute(fugitive#statusline(),'[Git','','g'),']','','g'):''}
 set statusline+=%r      "read only flag
 " set statusline+=%y      "filetype
 set statusline+=%=      "left/right separator
