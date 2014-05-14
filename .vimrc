@@ -118,6 +118,7 @@ au FileType cc set makeprg=[[\ -f\ Makefile\ ]]\ &&\ make\ \\\|\\\|\ make\ -C\ b
 " source code indenting
 set smarttab
 set smartindent
+au FileType python inoremap # X#
 set expandtab "set this to noexpandtab to make it a real tab and not white spaces
 set tabstop=4 "tab width
 set shiftwidth=4
@@ -215,15 +216,17 @@ highlight Folded ctermfg=darkblue ctermbg=NONE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ LONG LINE HIGHLIGHTING
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Long line highlighting {{{1
-if has("colorcolumn")
-    set colorcolumn=80
-else
-    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-    match OverLength /\%81v./
+" For Graphical Mode
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgray guibg=darkgray
+" if has("colorcolumn")
+"     set colorcolumn=80
+" else
+"     highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"     match OverLength /\%81v./
 "    au BufWinEnter * let w:m2=matchadd('ErrorMsg','\%>80v.\+', -1)
-endif
-set cc=80
+" endif
+" set cc=80
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ SEARCHING
@@ -251,33 +254,7 @@ autocmd FileType mail             let b:comment_leader = '> '
 autocmd FileType vim              let b:comment_leader = '" '
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
-
-" C Style // comments in blocks using visual mode or cmd mode ,//
-"map ,//  :s/^/\/\//<CR>:noh<CR>
-"vmap ,// :s/^/\/\//<CR>:noh<CR>
-" C Style // uncomment .//
-"map .//  :s/^\/\//<CR>:noh<CR>
-"vmap .// :s/^\/\//<CR>:noh<CR>
-
-" C Style /* comments
-"map ,/*  :s/^\(.*\)$/\/\* \1 \*\//<CR>:noh<CR>
-"vmap ,/*  :s/^\(.*\)$/\/\* \1 \*\//<CR>:noh<CR>
-" Uncomment /*
-"map ./*  :s/^\([/(]\*\) \(.*\) \(\*[/)]\)$/\2/<CR>:noh<CR>
-"vmap ./*  :s/^\([/(]\*\) \(.*\) \(\*[/)]\)$/\2/<CR>:noh<CR>
-
-" Maps ,*/ to turning // style comments to // this kind
-"map ,*/  :%s://\(.*\)://\1:<CR>:noh<CR>
-" Maps .*/ to turning // style comments to // this kind
-"map .*/  :%s:/\*\(.\{-\}\)\s*\*/://\1:<CR>:noh<CR>
-
-" # Style comments ,#
-"map  ,# :s/^/#/<CR>:noh<CR>
-"vmap ,# :s/^/#/<CR>:noh<CR>
-" # Style uncomment .#
-"map  .# :s/^#//<CR>:noh<CR>
-"vmap .# :s/^#//<CR>:noh<CR>
-
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ TAB CONTROLS 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
