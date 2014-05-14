@@ -258,13 +258,13 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ TAB CONTROLS 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-imap ,t <Esc>:tabnew %<CR>
+" nmap ,t <Esc>:tabnew %<CR>
 " press <F2> and type file name to open it in a new tab 
-nnoremap <F2> :tabe 
+"nnoremap <F2> :tabe 
 " Open a new blank tab by pressing <F3>
-nnoremap <silent> <F3> :tabnew <CR>
+"nnoremap <silent> <F3> :tabnew <CR>
 " close current tab
-nnoremap <silent> <F4> :tabc <CR>
+"nnoremap <silent> <F4> :tabc <CR>
 
 let uname = substitute(system("uname"),"\n","","g")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
