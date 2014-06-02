@@ -1,0 +1,33 @@
+export PRINTER='Lab'
+#source /opt/ros/diamondback/setup.bash
+#if [ -f /home/dan/.rospath ]; then
+#  source /home/dan/.rospath
+#fi
+
+USRLOCID=${GREEN}
+TIMESTMP=${BROWN}
+PATHLINE=${LIGHTBLUE}
+
+# Sets the ROS_MASTER_URI variable approprately
+# Example 'ros-master set atrv.lan'
+ros-master () {
+    if [ $# -eq 0 ] ; then
+        echo $ROS_MASTER_URI
+    elif [ $1 = "set" ] && [ $# -eq 2 ] ; then
+        export ROS_MASTER_URI=http://$2:11311
+    else
+        echo "USAGE:"
+        echo "ros-master                    displays the ROS_MASTER_URI"
+        echo "ros-master set <address>      sets the rosmaster address"
+    fi
+}
+
+# Select between Fuerte and Groovy
+source /opt/ros/hydro/setup.bash
+export ROS_PACKAGE_PATH=~/Source:$ROS_PACKAGE_PATH
+# export ROS_PARALLEL_JOBS='-j -l8'
+
+export GPG_TTY='tty'
+export LD_LIBRARY_PATH=/usr/local/lib
+
+echo "Welcome to Replicant!"
