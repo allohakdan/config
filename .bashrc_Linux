@@ -2,6 +2,7 @@ alias du='du -kh'
 alias dush='du -sh'
 alias df='df -kTh'
 alias ls='ls -hF --color'
+alias gvim="gvim -u $MINE/.vimrc"
 #alias dl='mv -t ~/.Trash --backup=t'
 alias linuxversion='lsb_release -a'
 
