@@ -89,6 +89,11 @@ execute pathogen#infect('~/.dan/.vim/bundle/{}')
 """ place buffer name into window title
 set title
 
+""" Disable the annoying F1 key
+nmap <F1> :echo<CR>
+imap <F1> <C-o>:echo<CR>
+
+
 " store swap files away from the current directory
 set backup
 " set backupdir=$VIMBKUPDIR 
