@@ -4,6 +4,7 @@ source /usr/share/vim/vimrc
 " Add our plugins directory to vims runtimepath
 let &runtimepath.=',~/.dan/.vim'
 
+let uname = substitute(system("uname"),"\n","","g")
 "v16
 "For use with the MiniBufExplorer, Taglist, Diffchanges, GnuPG, and NERDTree plugins 
 "
@@ -186,7 +187,12 @@ set showcmd
 " Useful for pasting but disables insert mode mappings
 "set paste  " simple pasting
 " ties clipboard to system + register (same as doing "+y )
-set clipboard=unnamedplus
+if uname == "Linux"
+    set clipboard=unnamedplus " + register (same as doing "+y )
+elseif uname == "Darwin"
+    set clipboard=unnamed " * register (same as doing "*y )
+endif
+
 
 " enable syntax highlighting
 set syntax=on
@@ -292,7 +298,6 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 " close current tab
 "nnoremap <silent> <F4> :tabc <CR>
 
-let uname = substitute(system("uname"),"\n","","g")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ PLUGIN OPTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
