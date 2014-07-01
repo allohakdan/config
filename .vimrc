@@ -185,6 +185,8 @@ set showcmd
 
 " Useful for pasting but disables insert mode mappings
 "set paste  " simple pasting
+" ties clipboard to system + register (same as doing "+y )
+set clipboard=unnamedplus
 
 " enable syntax highlighting
 set syntax=on
