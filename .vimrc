@@ -404,6 +404,18 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 
+" Solarized
+if has("gui_running")
+    try
+        colorscheme solarized
+        set background=light " or 'dark'
+    catch /^Vim\%((\a\+)\)\=:E185/
+        " deal with it, but don't set background to dark
+    endtry
+endif
+
+
+
 "*********************************************************************
 "*********************************************************************
 "               F U N C T I O N      D E F I N A T I O N S
