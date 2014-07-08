@@ -211,6 +211,7 @@ syntax enable
 """ MOUSE SETTINGS
 set mouse=a
 set ttymouse=xterm2 "get mouse working in screen
+set nomousehide
 " NOTE FOR USING SCREEN: you also need to add the following line to your .screenrc file
 " <in .screenrc> termcapinfo linux|xterm|rxvt|term-color ti@:te@:XT
 
