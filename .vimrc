@@ -4,6 +4,16 @@ source /usr/share/vim/vimrc
 " Add our plugins directory to vims runtimepath
 let &runtimepath.=',~/.dan/.vim'
 
+" let g:loaded_tagbar = 1
+" let g:loaded_fugitive = 1
+" let g:loaded_syntastic_plugin = 1
+" let g:loaded_supertab = 1
+" let g:loaded_gitgutter = 1
+" let g:loaded_taglist = 1
+" let g:loaded_nerd_tree = 1
+" let g:loaded_minibufexplorer = 1
+" let g:loaded_gnupg = 1
+" let g:loaded_diffchanges = 1
 let uname = substitute(system("uname"),"\n","","g")
 "v16
 "For use with the MiniBufExplorer, Taglist, Diffchanges, GnuPG, and NERDTree plugins 
