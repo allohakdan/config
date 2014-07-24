@@ -22,7 +22,15 @@ ros-master () {
     fi
 }
 
-source /opt/ros/hydro/setup.bash
+if [ $1 = "hydro" ]; then
+    echo "Using Ros Hydro"
+    source /opt/ros/hydro/setup.bash
+elif [ $1 = "indigo" ]; then
+    echo "Using Ros Indigo"
+    source /home/dan/ros_catkin_ws/install_isolated/setup.bash
+else
+    echo "Ros Distro not initialized"
+fi
 
 export GPG_TTY='tty'
 
