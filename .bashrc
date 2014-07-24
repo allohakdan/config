@@ -23,14 +23,15 @@ fi
 export MINE=$MINE
 
 source_if_exists() {
+# First argument is file to try to source, remaining arguments are passed in
     if [ -f "$1" ]; then
-        source "$1"
+        source $1 ${*:2}
     fi
 }
 
 # OS Specific Settings
 # OSX is in .bashrc.Darwin and Linux in .bashrc.Linux
-source_if_exists $MINE/.bashrc_`uname`
+source_if_exists $MINE/.bashrc_`uname` $@
 
 # Global Settings - These seem to work everywhere so far
 alias ll='ls -al'
@@ -51,14 +52,14 @@ alias ssh="$MINE/scripts/ssh"
 
 # Import CLI color names
 # Do this first, so that Host specific settings can get at it before we set the fancy terminal
-source_if_exists $MINE/.bashrc_colors
+source_if_exists $MINE/.bashrc_colors $@
 
 # Machine Specific Settings
 # If hostname is "robot-lab3" then put that machines settings in .bashrc.robot-lab3
 # source_if_exists $MINE/.bashrc_`hostname`
 # edit: it is kind of annoying when you get assigned a new hostname, so I wrote a 
 # function that lets me get it using scutil in osx, but still hostname in linux
-source_if_exists $MINE/.bashrc_$(get_machine_name)
+source_if_exists $MINE/.bashrc_$(get_machine_name) $@
 
 # Fancy Terminal with pretty colors
 # Note that the git terminal stuff is looking for '\n$ ' at the end of the string so
@@ -66,5 +67,5 @@ source_if_exists $MINE/.bashrc_$(get_machine_name)
 export PS1="\n${USRLOCID}\u@\h ${TIMESTMP}\d \@\n${PATHLINE}\w${NONE}\n$ "
 
 # Super Git Terminal Mode
-source_if_exists $MINE/.bashrc_git
+source_if_exists $MINE/.bashrc_git $@
 
