@@ -69,3 +69,5 @@ export PS1="\n${USRLOCID}\u@\h ${TIMESTMP}\d \@\n${PATHLINE}\w${NONE}\n$ "
 # Super Git Terminal Mode
 source_if_exists $MINE/.bashrc_git $@
 
+# Super Ros Terminal Mode
+source_if_exists $MINE/.bashrc_ros

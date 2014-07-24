@@ -1,0 +1,22 @@
+# Must be sourced towards the end of the .bashrc file, after PS1 has been set
+if [ -n "$ROS_DISTRO" ]; then
+    # Update commandline
+    export PS1=${PS1/\\\@\\\n/\\\@ ${RED}${ROS_DISTRO}\\\n}
+    echo "Using ros ${ROS_DISTRO}"
+else
+    echo "Ros distro not initialized"
+fi
+
+# Sets the ROS_MASTER_URI variable approprately
+# Example 'ros-master set atrv.lan'
+ros-master () {
+    if [ $# -eq 0 ] ; then
+        echo $ROS_MASTER_URI
+    elif [ $1 = "set" ] && [ $# -eq 2 ] ; then
+        export ROS_MASTER_URI=http://$2:11311
+    else
+        echo "USAGE:"
+        echo "ros-master                    displays the ROS_MASTER_URI"
+        echo "ros-master set <address>      sets the rosmaster address"
+    fi
+}
