@@ -50,5 +50,5 @@ fi
 
 # Install SSH Configuration
 # [db] removed from use - this can be done manually for each key desired
-echo "To Install SSH Keys, cd to ~/.dan/.ssh and run ../scripts/setup/config_ssh.sh"
+echo "To Install SSH Keys, run .dan/scripts/setup/config_ssh.sh from home directory."
 #~/.dan/scripts/setup/ssh_config.sh
