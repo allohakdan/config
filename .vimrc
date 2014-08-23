@@ -140,6 +140,10 @@ set tabstop=4 "tab width
 set shiftwidth=4
 set autoindent
 
+" spell checking for comments
+" enable using :set spell
+set spelllang=en_us
+
 filetype plugin indent on   "This is needed for the tablist plugin
 
 " Ctrl-n will also give you word completion 
@@ -173,8 +177,8 @@ command Check SyntasticCheck
 let g:syntastic_mode_map = {'mode': 'passive'}
 let g:syntastic_check_on_wq = 0
 " Python - use pylint only, and only show errors
-let g:syntastic_python_pylint_args = "-E"
-let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_python_pylint_args = "-E"
+let g:syntastic_python_checkers = ['flake8','pylint']
 
 " Fugitive - Specify custom git command compatible with chdan
 let g:fugitive_git_executable = 'HOME=$HOME/.dan/ git' 
@@ -260,7 +264,7 @@ highlight Folded ctermfg=darkblue ctermbg=NONE
 """ LONG LINE HIGHLIGHTING
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " For Graphical Mode
-set colorcolumn=80
+set colorcolumn=80,100
 highlight ColorColumn ctermbg=darkgray guibg=darkgray
 " if has("colorcolumn")
 "     set colorcolumn=80
@@ -414,6 +418,11 @@ if has("gui_running")
     endtry
 endif
 
+
+" Turn off gvim icon toolbar
+if has("gui_running")
+    set guioptions-=T
+endif
 
 
 "*********************************************************************
