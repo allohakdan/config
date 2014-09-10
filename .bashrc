@@ -29,6 +29,13 @@ source_if_exists() {
     fi
 }
 
+exec_if_exists() {
+# Try to execute command, fail silently 
+    if [ `type -t $1` ]; then
+        $1
+    fi
+}
+
 # OS Specific Settings
 # OSX is in .bashrc.Darwin and Linux in .bashrc.Linux
 source_if_exists $MINE/.bashrc_`uname` $@
