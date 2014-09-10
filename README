@@ -1,13 +1,11 @@
 
-
-
 INSTALLING WITH GIT
 ----------
 Checkout the repository in the home directory to a ~/.dan directory
 
 For read-only
     $ cd
-    $ git clone git://github.com/allohakdan/config.git .dan
+    $ git clone https://github.com/allohakdan/config.git .dan
 
 For read/write
     $ cd
