@@ -22,11 +22,6 @@ if [ ${HOME##*/} = ".dan" ]; then
 fi
 export MINE=$MINE
 
-# Import CLI color names
-# Do this first, so that Host specific settings can get at it before we set the fancy terminal
-source_if_exists $MINE/.bashrc_colors $@
-
-
 source_if_exists() {
 # First argument is file to try to source, remaining arguments are passed in
     if [ -f "$1" ]; then
@@ -40,6 +35,11 @@ exec_if_exists() {
         $1
     fi
 }
+
+# Import CLI color names
+# Do this first, so that Host specific settings can get at it before we set the fancy terminal
+source_if_exists $MINE/.bashrc_colors $@
+
 
 # OS Specific Settings
 # OSX is in .bashrc.Darwin and Linux in .bashrc.Linux
