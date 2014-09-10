@@ -1,11 +1,13 @@
-# Must be sourced towards the end of the .bashrc file, after PS1 has been set
-if [ -n "$ROS_DISTRO" ]; then
-    # Update commandline
-    export PS1=${PS1/\\\@\\\n/\\\@ ${RED}${ROS_DISTRO}\\\n}
-    echo "Using ros ${ROS_DISTRO}"
-else
-    echo "Ros distro not initialized"
-fi
+# Must be executed towards the end of the .bashrc file, after PS1 has been set
+set-ros-prompt () {
+    if [ -n "$ROS_DISTRO" ]; then
+        # Update commandline
+        export PS1=${PS1/\\\@\\\n/\\\@ ${RED}${ROS_DISTRO}\\\n}
+        echo "Using ros ${ROS_DISTRO}"
+    else
+        echo "Ros distro not initialized"
+    fi
+}
 
 # Sets the ROS_MASTER_URI variable approprately
 # Example 'ros-master set atrv.lan'
