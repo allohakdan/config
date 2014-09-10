@@ -22,6 +22,11 @@ if [ ${HOME##*/} = ".dan" ]; then
 fi
 export MINE=$MINE
 
+# Import CLI color names
+# Do this first, so that Host specific settings can get at it before we set the fancy terminal
+source_if_exists $MINE/.bashrc_colors $@
+
+
 source_if_exists() {
 # First argument is file to try to source, remaining arguments are passed in
     if [ -f "$1" ]; then
@@ -56,10 +61,10 @@ alias tmux="tmux -f$MINE/.tmux.conf"
 # SSH Settings
 # alias ssh="echo "hi";ssh -F $MINE/.ssh/config"
 alias ssh="$MINE/scripts/ssh"
-
-# Import CLI color names
-# Do this first, so that Host specific settings can get at it before we set the fancy terminal
-source_if_exists $MINE/.bashrc_colors $@
+# Git Settings
+source_if_exists $MINE/.bashrc_git $@
+# Ros Settings
+source_if_exists $MINE/.bashrc_ros
 
 # Machine Specific Settings
 # If hostname is "robot-lab3" then put that machines settings in .bashrc.robot-lab3
@@ -74,10 +79,6 @@ source_if_exists $MINE/.bashrc_$(get_machine_name) $@
 # if you change it you must change it there too
 export PS1="\n${USRLOCID}\u@\h ${TIMESTMP}\d \@\n${PATHLINE}\w${NONE}\n$ "
 
-# Super Git Terminal Mode
 # Must Come after the export PS1 line
-source_if_exists $MINE/.bashrc_git $@
-
-# Super Ros Terminal Mode
-# Must Come after the export PS1 line
-source_if_exists $MINE/.bashrc_ros
+exec_if_exists set-git-prompt
+exec_if_exists set-ros-prompt
