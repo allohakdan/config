@@ -58,7 +58,8 @@ source_if_exists $MINE/.bashrc_colors $@
 # If hostname is "robot-lab3" then put that machines settings in .bashrc.robot-lab3
 # source_if_exists $MINE/.bashrc_`hostname`
 # edit: it is kind of annoying when you get assigned a new hostname, so I wrote a 
-# function that lets me get it using scutil in osx, but still hostname in linux
+# function that lets me get it using scutil in osx, but still hostname in linux.
+# Must come before the export PS1 line
 source_if_exists $MINE/.bashrc_$(get_machine_name) $@
 
 # Fancy Terminal with pretty colors
@@ -67,7 +68,9 @@ source_if_exists $MINE/.bashrc_$(get_machine_name) $@
 export PS1="\n${USRLOCID}\u@\h ${TIMESTMP}\d \@\n${PATHLINE}\w${NONE}\n$ "
 
 # Super Git Terminal Mode
+# Must Come after the export PS1 line
 source_if_exists $MINE/.bashrc_git $@
 
 # Super Ros Terminal Mode
+# Must Come after the export PS1 line
 source_if_exists $MINE/.bashrc_ros
