@@ -11,6 +11,7 @@ elif [[ `uname` == "Darwin" ]]; then
         sudo port install wget tmux python27 py27-pylint watch htop iftop vim gnupg py27-flake8
         sudo port select --set python python27
         sudo port select --set pylint pylint27
+        sudo port select --set flake8 flake827
     fi
 fi
 
