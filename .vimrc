@@ -173,11 +173,14 @@ set statusline+=\ %P    "percent through file
 
 " Syntax Checking Commands
 command Check SyntasticCheck
+command CheckOff SyntasticReset
 " Don't let syntastic run on write
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = {'mode': 'passive'}
 let g:syntastic_check_on_wq = 0
 " Python - use pylint only, and only show errors
-" let g:syntastic_python_pylint_args = "-E"
+let g:syntastic_python_pylint_args = "-d line-too-long,anomalous-backslash-in-string,too-many-instance-attributes,invalid-name"
+let g:syntastic_python_flake8_args = "--max-line-length=100"
 let g:syntastic_python_checkers = ['flake8','pylint']
 
 " Fugitive - Specify custom git command compatible with chdan
