@@ -308,6 +308,8 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 " Latex
 " nnoremap <silent> ,cr :w<CR>:!rubber --pdf --warn all %<CR>
 au FileType tex set makeprg=rubber\ \-\-pdf\ \-\-warn\ all\ %
+au FileType tex command Make :!rubber --pdf --warn all %
+au FileType tex command Clean :!rubber --clean %
 
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
