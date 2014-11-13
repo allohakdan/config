@@ -306,8 +306,11 @@ noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<C
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 " Latex
+" Map the keystroke ,cr to build
 " nnoremap <silent> ,cr :w<CR>:!rubber --pdf --warn all %<CR>
-au FileType tex set makeprg=rubber\ \-\-pdf\ \-\-warn\ all\ %
+" Map :make to build - disabled because if any errors resulted it would open a 
+" blank buffer
+" au FileType tex set makeprg=rubber\ \-\-pdf\ \-\-warn\ all\ %
 au FileType tex command Make :!rubber --pdf --warn all %
 au FileType tex command Clean :!rubber --clean %
 
