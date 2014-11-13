@@ -305,7 +305,9 @@ autocmd FileType vim              let b:comment_leader = '" '
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Latex
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map the keystroke ,cr to build
 " nnoremap <silent> ,cr :w<CR>:!rubber --pdf --warn all %<CR>
 " Map :make to build - disabled because if any errors resulted it would open a 
@@ -313,8 +315,11 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 " au FileType tex set makeprg=rubber\ \-\-pdf\ \-\-warn\ all\ %
 au FileType tex command Make :!rubber --pdf --warn all %
 au FileType tex command Clean :!rubber --clean %
+" Smart Quotes
 au FileType tex inoremap " ``''<ESC>hi
-
+" Enable Spell Checking
+au FileType tex set spell spelllang=en_us
+" 
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ TAB CONTROLS 
