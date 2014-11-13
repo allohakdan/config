@@ -313,6 +313,7 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 " au FileType tex set makeprg=rubber\ \-\-pdf\ \-\-warn\ all\ %
 au FileType tex command Make :!rubber --pdf --warn all %
 au FileType tex command Clean :!rubber --clean %
+au FileType tex inoremap " ``''<ESC>hi
 
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
