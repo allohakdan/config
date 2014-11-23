@@ -2,6 +2,7 @@ alias du='du -h'
 alias dush='du -sh'
 alias df='df -h'
 alias ls='ls -hFG'
+alias mvimtab='mvim --remote-tab'
 
 # MacPorts Installer addition on 2009-08-12_at_23:12:16: 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
