@@ -1,4 +1,5 @@
 #!/bin/sh
 USER_HOME=$(eval echo ~${USER})
-# /usr/bin/ssh -F $MINE/.ssh/config $@
-/usr/bin/ssh -F $USER_HOME/.dan/.ssh/config $@
+# /usr/bin/ssh -F $USER_HOME/.dan/.ssh/config $@
+SSH_CMD=`which ssh`
+$SSH_CMD -F $USER_HOME/.dan/.ssh/config $@
