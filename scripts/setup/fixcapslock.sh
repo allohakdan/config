@@ -1,4 +1,6 @@
 #!/bin/bash
+# Taken from http://askubuntu.com/a/223674
+
 # To see all things you can set with options
 # grep -E "(ctrl|caps):" /usr/share/X11/xkb/rules/base.lst
 
