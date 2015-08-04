@@ -4,7 +4,8 @@ set-ros-prompt () {
         # Update commandline
         export PS1=${PS1/\\\@\\\n/\\\@ ${RED}${ROS_DISTRO}\\\n}
         echo "Using ros ${ROS_DISTRO}"
-    else
+    elif [ -d "/opt/ros/" ]; then
+        # If ROS is installed, but not being sourced, let the person know
         echo "Ros distro not initialized"
     fi
 }

@@ -179,8 +179,8 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = {'mode': 'passive'}
 let g:syntastic_check_on_wq = 0
 " Python - use pylint only, and only show errors
-let g:syntastic_python_pylint_args = "-d line-too-long,anomalous-backslash-in-string,too-many-instance-attributes,invalid-name"
-let g:syntastic_python_flake8_args = "--max-line-length=100"
+let g:syntastic_python_pylint_args = "-d line-too-long,anomalous-backslash-in-string,too-many-instance-attributes,invalid-name,logging-not-lazy"
+let g:syntastic_python_flake8_args = "--max-line-length=100 --ignore=E501"
 let g:syntastic_python_checkers = ['flake8','pylint']
 
 " Fugitive - Specify custom git command compatible with chdan

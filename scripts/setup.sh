@@ -9,6 +9,7 @@ elif [[ `uname` == "Darwin" ]]; then
     else
         echo "Installing wget,tmux,python,pylint,watch,htop,iftop,vim,gnupg,flake8 from macports"
         sudo port install wget tmux python27 py27-pylint watch htop iftop vim gnupg py27-flake8
+        sudo port install vim +python27
         sudo port select --set python python27
         sudo port select --set pylint pylint27
         sudo port select --set flake8 flake827

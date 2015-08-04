@@ -5,11 +5,13 @@ PATHLINE=${LIGHTBLUE}
 
 if [ $1 = "hydro" ]; then
     source /opt/ros/hydro/setup.bash
+elif [ $1 = "indigo" ]; then
+    source /opt/ros/indigo/setup.bash
 fi
 
 export GPG_TTY='tty'
-export LD_LIBRARY_PATH=/usr/local/lib
+# export LD_LIBRARY_PATH=/usr/local/lib
 export ROS_PARALLEL_JOBS='-j -l8'
-export PATH=~/Downloads/adt-bundle-linux/sdk/tools:~/Downloads/adt-bundle-linux/sdk/platform-tools:$PATH
+export PATH=~/Downloads/android-sdk-linux/tools:~/Downloads/android-sdk-linux/platform-tools:$PATH
 
 echo "Welcome to Robot-lab3!"
