@@ -12,6 +12,9 @@ export MANPATH=/opt/local/share/man:$MANPATH
 # Support Exuberant Ctags (default location)
 export PATH=/usr/local/bin:$PATH
 
+# Support Macports Python installs using pip
+export PATH=$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/
+
 # Fix for using sshfs binary in macfusion while its broken
 # use commands
 # $ mkdir /Volumes/tonido
