@@ -296,7 +296,7 @@ set nohlsearch
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ COMMENTING MACROS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
+autocmd FileType c,cpp,java,scala, javascript  let b:comment_leader = '// '
 autocmd FileType sh,ruby,python,R let b:comment_leader = '# '
 autocmd FileType conf,fstab,cmake let b:comment_leader = '# '
 autocmd FileType tex              let b:comment_leader = '% '
