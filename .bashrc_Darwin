@@ -3,7 +3,8 @@ alias dush='du -sh'
 alias df='df -h'
 alias ls='ls -hFG'
 alias mvimtab='mvim --remote-tab'
-
+# Load paths from /etc/paths.d/  (http://apple.stackexchange.com/a/128903)
+eval `/usr/libexec/path_helper -s`
 # MacPorts Installer addition on 2009-08-12_at_23:12:16: 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # MacPorts Installer addition on 2009-08-12_at_23:12:16: 
