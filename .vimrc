@@ -7,7 +7,7 @@ let &runtimepath.=',~/.dan/.vim'
 " let g:loaded_tagbar = 1
 " let g:loaded_fugitive = 1
 " let g:loaded_syntastic_plugin = 1
-" let g:loaded_supertab = 1
+let g:loaded_supertab = 1
 " let g:loaded_gitgutter = 1
 " let g:loaded_taglist = 1
 " let g:loaded_nerd_tree = 1
@@ -187,12 +187,12 @@ let g:syntastic_python_checkers = ['flake8','pylint']
 let g:fugitive_git_executable = 'HOME=$HOME/.dan/ git' 
 
 " Python support using supertab
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest ",preview
+" au FileType python set omnifunc=pythoncomplete#Complete
+" let g:SuperTabDefaultCompletionType = "context"
+" set completeopt=menuone,longest ",preview
 
 " Use tab-complete for supertab!
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+" let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ USER INTERFACE OPTIONS
