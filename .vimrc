@@ -120,6 +120,10 @@ else
     let s:tval=$HOME."/.dan/.vimbkup"
 endif
 let &backupdir=s:tval 
+" store swp files in the same directory as backups.
+" appending the // to the end means save file name as the full path
+let &directory=s:tval."//"
+
 
 " Printing options
 "set printdevice=ldp://129.63.16.182
