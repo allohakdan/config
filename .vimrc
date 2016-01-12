@@ -251,7 +251,9 @@ noremap k gk
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set foldmethod=manual
 "set foldmethod=indent
-set foldmethod=syntax
+"
+set foldmethod=manual
+au FileType c,cpp,java,scala,ruby,python,R,tex set foldmethod=syntax
 set foldenable
 " make folds open by default
 set foldlevel=100
