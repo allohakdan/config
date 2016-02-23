@@ -319,8 +319,8 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 " Map :make to build - disabled because if any errors resulted it would open a 
 " blank buffer
 " au FileType tex set makeprg=rubber\ \-\-pdf\ \-\-warn\ all\ %
-au FileType tex command Make :!rubber --pdf --warn all %
-au FileType tex command Clean :!rubber --clean %
+au FileType tex command Make :execute "!cd ".shellescape("%:p:h")." && rubber --pdf --warn all %:t"
+au FileType tex command Clean :execute "!cd ".shellescape("%:p:h")." && rubber --clean %:t"
 " Smart Quotes
 au FileType tex inoremap " ``''<ESC>hi
 " Enable Spell Checking
