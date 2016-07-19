@@ -94,7 +94,7 @@ let uname = substitute(system("uname"),"\n","","g")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Execute pathogen - requres disabling options in sessions
 set sessionoptions-=options
-execute pathogen#infect('~/.dan/.vim/bundle/{}')
+execute pathogen#infect('~/.dan/.vim/bundle/{}', '~/.dan/.vim/syntax/{}')
 
 
 """ place buffer name into window title
@@ -265,6 +265,11 @@ set foldcolumn=1
 set foldtext=getline(v:foldstart)
 nnoremap <F9> [{V%zf <CR>
 autocmd BufRead *.py set foldmethod=indent
+
+" YAML
+au BufRead,BufNewFile *.yaml set filetype=yaml
+au Filetype yaml set foldmethod=syntax
+
 
 " highlight Folded guifg=reverse guibg=NONE
 highlight Folded ctermfg=darkblue ctermbg=NONE
