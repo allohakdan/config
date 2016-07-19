@@ -198,6 +198,10 @@ let g:fugitive_git_executable = 'HOME=$HOME/.dan/ git'
 " Use tab-complete for supertab!
 " let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
+" YAML
+au BufRead,BufNewFile *.yaml set filetype=yaml
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ USER INTERFACE OPTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -253,7 +257,7 @@ noremap k gk
 "set foldmethod=indent
 "
 set foldmethod=manual
-au FileType c,cpp,java,scala,ruby,python,R,tex set foldmethod=syntax
+au FileType c,cpp,java,scala,ruby,python,R,tex,yaml set foldmethod=syntax
 set foldenable
 " make folds open by default
 set foldlevel=100
@@ -265,10 +269,6 @@ set foldcolumn=1
 set foldtext=getline(v:foldstart)
 nnoremap <F9> [{V%zf <CR>
 autocmd BufRead *.py set foldmethod=indent
-
-" YAML
-au BufRead,BufNewFile *.yaml set filetype=yaml
-au Filetype yaml set foldmethod=syntax
 
 
 " highlight Folded guifg=reverse guibg=NONE
