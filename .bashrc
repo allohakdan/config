@@ -41,6 +41,9 @@ dgpg() {
     gpg -q --no-mdc-warning -d "$1" | less
 }
 
+httpserver() {
+    python -m SimpleHTTPServer
+}
 
 # Import CLI color names
 # Do this first, so that Host specific settings can get at it before we set the fancy terminal
