@@ -198,7 +198,7 @@ let g:fugitive_git_executable = 'HOME=$HOME/.dan/ git'
 " Use tab-complete for supertab!
 " let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
-" YAML
+" Detect YAML files
 au BufRead,BufNewFile *.yaml set filetype=yaml
 
 
