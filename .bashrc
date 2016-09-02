@@ -41,8 +41,10 @@ dgpg() {
     gpg -q --no-mdc-warning -d "$1" | less
 }
 
+# Run a HTTP server from the current directory.
+# Optionally specify a port to host on (default is 8000)
 httpserver() {
-    python -m SimpleHTTPServer
+    python -m SimpleHTTPServer $1
 }
 
 # Import CLI color names
