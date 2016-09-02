@@ -10,4 +10,4 @@ editor = vim
 [alias]
 # Console gitview replacement
 lg = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %Cblue%an%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-
+logs = log --stat
