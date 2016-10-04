@@ -5,7 +5,11 @@ set-git-prompt () {
         parse_git_dirty() {
          gitstatus=`git status 2> /dev/null | tail -n1`
 #         [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
-         if [[ $gitstatus != *"working directory clean"* ]]; then
+#          if [[ $gitstatus != *"working directory clean"* ]]; then
+##      The above no longer works in newer version of git, because they changed the output wording
+##      of the last line (tail -n1) to say "tree" instead of "directory". Grep -E checks against a
+##      regular expression, -q returns as a logical test instead of matched output, and -v negates.
+        if `git status 2> /dev/null | tail -n1 | grep -Eqv "working directory|tree clean$"` ; then
              if [[ $gitstatus == *"untracked files present"* ]]; then
                  echo "+"
              else
