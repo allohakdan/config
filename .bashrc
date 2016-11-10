@@ -61,7 +61,7 @@ alias ll='ls -al'
 alias la='ls -a'
 alias lx='ls -lXB'
 alias cd..='cd ..'
-alias grep='grep -n --color=always'
+alias grep='grep --color=auto'
 #alias dl="$MINE/scripts/dl"
 alias rm='rm -i'
 
