@@ -54,5 +54,5 @@ fi
 
 # Install SSH Configuration
 # [db] removed from use - this can be done manually for each key desired
-echo "To Install SSH Keys, open a new terminal. Run chdan. Then run .dan/scripts/setup/ssh_config.sh from home directory."
+echo "To Install SSH Keys, open a new terminal. Run chdan. Then run ssh-key-decrypt .dan/.ssh/id_rsa.keyname.asc"
 #~/.dan/scripts/setup/ssh_config.sh
