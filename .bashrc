@@ -72,6 +72,7 @@ alias tmux="tmux -f$MINE/.tmux.conf"
 # SSH Settings
 # alias ssh="echo "hi";ssh -F $MINE/.ssh/config"
 alias ssh="$MINE/scripts/ssh"
+source_if_exists $MINE/.bashrc_ssh
 # Git Settings
 source_if_exists $MINE/.bashrc_git $@
 # Ros Settings
