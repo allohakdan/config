@@ -278,8 +278,10 @@ highlight Folded ctermfg=darkblue ctermbg=NONE
 """ LONG LINE HIGHLIGHTING
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " For Graphical Mode
-set colorcolumn=80,100
-highlight ColorColumn ctermbg=darkgray guibg=darkgray
+if has("gui_running")
+    set colorcolumn=80,100
+    highlight ColorColumn ctermbg=darkgray guibg=darkgray
+endif
 " if has("colorcolumn")
 "     set colorcolumn=80
 " else
@@ -426,6 +428,7 @@ vmap <silent><End> <Esc>:call SmartEnd("v")<CR>
 " Python Fix for virtualenv so it can do code completion inside cwd
 " Auto adds this directories site-packages to the vim path.
 " It does not seem to conflict with other file types
+if has('python')
 py << EOF
 import os.path
 import sys
@@ -436,7 +439,7 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this,dict(__file__=activate_this))
 EOF
-
+endif
 
 " Solarized
 if has("gui_running")
