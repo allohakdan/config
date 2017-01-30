@@ -183,9 +183,10 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = {'mode': 'passive'}
 let g:syntastic_check_on_wq = 0
 " Python - use pylint only, and only show errors
-let g:syntastic_python_pylint_args = "-d line-too-long,anomalous-backslash-in-string,too-many-instance-attributes,invalid-name,logging-not-lazy"
+let g:syntastic_python_pylint_args = "-d line-too-long,anomalous-backslash-in-string,too-many-instance-attributes,invalid-name,logging-not-lazy,missing-docstring"
 let g:syntastic_python_flake8_args = "--max-line-length=100 --ignore=E501"
-let g:syntastic_python_checkers = ['flake8','pylint']
+" let g:syntastic_python_checkers = ['flake8','pylint']
+let g:syntastic_python_checkers = ['pylint']
 
 " Fugitive - Specify custom git command compatible with chdan
 let g:fugitive_git_executable = 'HOME=$HOME/.dan/ git' 
@@ -397,6 +398,11 @@ let g:GPGPreferSymmetric = 1
 let g:GPGPreferArmor = 1
 endif
 
+" Smooth Scrolling for page up and page down
+noremap <silent> <PageUp> :call smooth_scroll#up(&scroll,0,2) <CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll,0,2) <CR>
+noremap <silent> <PageDown> :call smooth_scroll#down(&scroll,0,2) <CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll,0,2) <CR>
 
 
 " Munjals Window tabbing
