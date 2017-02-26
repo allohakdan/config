@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ "$(whoami)" == "root" ]; then
+    echo "Please do not run this script as root."
+    exit 1
+fi
+
 if [[ `uname` == "Linux" ]]; then
     echo "Installing git,vim,tmux,ssh,pylint,flake8 from apt"
     sudo apt-get install git-core vim tmux ssh exuberant-ctags pylint python-flake8 python-pip
@@ -17,8 +22,9 @@ elif [[ `uname` == "Darwin" ]]; then
     fi
 fi
 
-if grep -qs chdan ~/.bashrc; then
+if grep -Fq chdan ~/.bashrc; then
     echo "chdan command already installed, skipping"
+    cat ~/.bashrc
 else
     echo "Installing chdan into .bashrc"
     echo "alias chdan='source ~/.dan/.bashrc'" >> ~/.bashrc
