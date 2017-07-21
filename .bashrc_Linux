@@ -10,3 +10,7 @@ alias linuxversion='lsb_release -a'
 get_machine_name() {
     echo `hostname` 
 }
+
+fixcaps(){
+    setxkbmap -option caps:escape
+}

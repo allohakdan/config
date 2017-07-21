@@ -183,9 +183,10 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = {'mode': 'passive'}
 let g:syntastic_check_on_wq = 0
 " Python - use pylint only, and only show errors
-let g:syntastic_python_pylint_args = "-d line-too-long,anomalous-backslash-in-string,too-many-instance-attributes,invalid-name,logging-not-lazy"
+let g:syntastic_python_pylint_args = "-d line-too-long,anomalous-backslash-in-string,too-many-instance-attributes,invalid-name,logging-not-lazy,missing-docstring"
 let g:syntastic_python_flake8_args = "--max-line-length=100 --ignore=E501"
-let g:syntastic_python_checkers = ['flake8','pylint']
+" let g:syntastic_python_checkers = ['flake8','pylint']
+let g:syntastic_python_checkers = ['pylint']
 
 " Fugitive - Specify custom git command compatible with chdan
 let g:fugitive_git_executable = 'HOME=$HOME/.dan/ git' 
@@ -278,8 +279,10 @@ highlight Folded ctermfg=darkblue ctermbg=NONE
 """ LONG LINE HIGHLIGHTING
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " For Graphical Mode
-set colorcolumn=80,100
-highlight ColorColumn ctermbg=darkgray guibg=darkgray
+if has("gui_running")
+    set colorcolumn=80,100
+    highlight ColorColumn ctermbg=darkgray guibg=darkgray
+endif
 " if has("colorcolumn")
 "     set colorcolumn=80
 " else
@@ -395,6 +398,11 @@ let g:GPGPreferSymmetric = 1
 let g:GPGPreferArmor = 1
 endif
 
+" Smooth Scrolling for page up and page down
+noremap <silent> <PageUp> :call smooth_scroll#up(&scroll,0,2) <CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll,0,2) <CR>
+noremap <silent> <PageDown> :call smooth_scroll#down(&scroll,0,2) <CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll,0,2) <CR>
 
 
 " Munjals Window tabbing
@@ -426,6 +434,7 @@ vmap <silent><End> <Esc>:call SmartEnd("v")<CR>
 " Python Fix for virtualenv so it can do code completion inside cwd
 " Auto adds this directories site-packages to the vim path.
 " It does not seem to conflict with other file types
+if has('python')
 py << EOF
 import os.path
 import sys
@@ -436,7 +445,7 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this,dict(__file__=activate_this))
 EOF
-
+endif
 
 " Solarized
 if has("gui_running")

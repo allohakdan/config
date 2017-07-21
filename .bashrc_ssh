@@ -1,0 +1,41 @@
+ssh-key-decrypt() {
+# Decrypt gpg protected ssh key files
+# $1 - file to decrypt, $2 - (optional) pass in password
+    KEYFILE=$1
+    # Check that input file exists
+    if [ ! -s $KEYFILE ]; then
+        echo "Input file does not exist"
+        return 0
+    fi
+    # for key.asc, check if key and key.pub exist
+    if [ -s ${KEYFILE%.asc} -a -s ${KEYFILE%.asc}.pub ]; then
+        echo "File has already been decrypted"
+        return 0
+    fi
+
+    # Check if password was supplied
+    if [ ! $2 ]; then
+        echo "Passphrase to decrypt gpg protected ssh key file:"
+        read -s PASSWD
+    else
+        PASSWD=$2
+    fi
+
+    echo "Decrypting"
+    gpg -d --passphrase $PASSWD --no-use-agent -q $KEYFILE > ${KEYFILE%.asc}
+    chmod 700 ${KEYFILE%.asc}
+
+    # Make sure file was created successfully
+    if [ ! -s ${KEYFILE%.asc} ]; then
+        echo "Decryption Failed!"
+        return 0
+    fi
+
+    if [ -s ${KEYFILE%.asc}.pub ]; then
+        echo "Public key file already exists"
+        return 0
+    fi
+
+    echo "Generating public key"
+    ssh-keygen -y -f ${KEYFILE%.asc} > ${KEYFILE%.asc}.pub
+}

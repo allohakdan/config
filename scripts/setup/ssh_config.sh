@@ -1,4 +1,8 @@
 #!/bin/bash 
+### DEPRECATED ###
+### Please use ``ssh-key-decrypt /path/to/key.asc``
+#
+
 # if [ ! -f ~/.ssh/config ]; then
 #     echo "Copying ssh config file"
 #     cp ~/.dan/scripts/setup/.ssh/config ~/.ssh/config

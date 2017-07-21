@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ "$(whoami)" == "root" ]; then
+    echo "Please do not run this script as root."
+    exit 1
+fi
+
 if [[ `uname` == "Linux" ]]; then
     echo "Installing git,vim,tmux,ssh,pylint,flake8 from apt"
     sudo apt-get install git-core vim tmux ssh exuberant-ctags pylint python-flake8 python-pip
@@ -17,8 +22,9 @@ elif [[ `uname` == "Darwin" ]]; then
     fi
 fi
 
-if grep -qs chdan ~/.bashrc; then
+if grep -Fq chdan ~/.bashrc; then
     echo "chdan command already installed, skipping"
+    cat ~/.bashrc
 else
     echo "Installing chdan into .bashrc"
     echo "alias chdan='source ~/.dan/.bashrc'" >> ~/.bashrc
@@ -54,5 +60,5 @@ fi
 
 # Install SSH Configuration
 # [db] removed from use - this can be done manually for each key desired
-echo "To Install SSH Keys, open a new terminal. Run chdan. Then run .dan/scripts/setup/ssh_config.sh from home directory."
+echo "To Install SSH Keys, open a new terminal. Run chdan. Then run ssh-key-decrypt .dan/.ssh/id_rsa.keyname.asc"
 #~/.dan/scripts/setup/ssh_config.sh
