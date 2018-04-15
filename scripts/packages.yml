@@ -1,12 +1,18 @@
+test:
+  Linux: test-4
+    Precipt: test-1
+    Trusty: test-2
+  Darwin: test-3
+
 git:
-  Linux: git-core
-  Trusty: git-core
+  Linux: git-core2
+    Trusty: git-core
 
 vim:
   Linux: vim
+    Trusty: vim
+    Raspbian8: vim-nox
   Darwin: vim
-  Trusty: vim
-  Raspbian8: vim-nox
 
 tmux:
   Linux: tmux
