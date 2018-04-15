@@ -1,9 +1,3 @@
-test:
-  Linux: test-4
-    Precipt: test-1
-    Trusty: test-2
-    #  Darwin: $(port_installed test-3) || { echo "hello"; echo "world"; }
-
 git:
   Linux: apt-get install git-core
     Trusty: apt-get install git-core
