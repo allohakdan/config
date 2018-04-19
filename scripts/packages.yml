@@ -10,7 +10,7 @@ vim:
 
 tmux:
   Linux: apt-get install tmux
-  Darwin: $(port_installed tmux) || port install tmux
+  Darwin: $(port_installed tmux) || port install tmux tmux-pasteboard
 
 ssh:
   Linux: apt-get install ssh
