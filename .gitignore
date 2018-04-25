@@ -7,3 +7,4 @@ id_rsa.home*
 *.swp
 known_hosts
 .bashrc_jfrog
+.bashrc_aws
