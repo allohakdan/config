@@ -4,3 +4,4 @@ alias mvim='mvim -u /Users/dan.brooks/.dan/.vimrc'
 unset GPG_AGENT_INFO
 export GPG_TTY='tty'
 source_if_exists ~/.dan/.bashrc_jfrog
+source_if_exists ~/.dan/.bashrc_aws
