@@ -4,6 +4,7 @@ PATHLINE=${LIGHTBLUE}
 
 source_if_exists ~/.dan/.bashrc_jfrog
 source_if_exists ~/.dan/.bashrc_aws
+source_if_exists /opt/ros/kinetic/setup.bash
 export GPG_TTY='tty'
 
 echo "Welcome to Adamant"
