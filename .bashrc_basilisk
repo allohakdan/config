@@ -1,0 +1,9 @@
+USRLOCID=${GREEN}
+TIMESTMP=${DARKGREY}
+PATHLINE=${LIGHTBLUE}
+
+source_if_exists ~/.dan/.bashrc_jfrog
+source_if_exists ~/.dan/.bashrc_aws
+export GPG_TTY='tty'
+
+echo "Welcome to Basilisk"
