@@ -14,3 +14,9 @@ get_machine_name() {
 fixcaps(){
     setxkbmap -option caps:escape
 }
+
+# Auto fix caps lock if possible
+# https://stackoverflow.com/a/677212 
+if hash xsetxkbmap 2> /dev/null; then
+    setxkbmap -option caps:escape
+fi
