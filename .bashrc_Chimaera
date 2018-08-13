@@ -5,3 +5,11 @@ unset GPG_AGENT_INFO
 export GPG_TTY='tty'
 source_if_exists ~/.dan/.bashrc_jfrog
 source_if_exists ~/.dan/.bashrc_aws
+
+penguinrestart() {
+    supervisorctl -s http://penguinbox.local -u pi -p snoopy22 restart penguins
+}
+
+sharesynergy() {
+     synergys -f --debug WARNING --config ~/.dan/.synergy.conf
+ }
