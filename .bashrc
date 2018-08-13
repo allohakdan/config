@@ -38,7 +38,7 @@ exec_if_exists() {
 
 # decode gpg files into temporary buffer
 dgpg() {
-    gpg -q --no-mdc-warning -d "$1" | less
+    gpg -q --no-mdc-warning --ignore-mdc-error -d "$1" | less
 }
 
 # Run a HTTP server from the current directory.

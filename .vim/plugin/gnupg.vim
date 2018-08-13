@@ -394,7 +394,7 @@ function s:GPGDecrypt()
   " since even with the --quiet option passphrase typos will be reported,
   " we must redirect stderr (using shell temporarily)
   call s:GPGDebug(1, "decrypting file")
-  let commandline = "'[,']!" . s:GPGCommand . " --quiet --decrypt " . s:stderrredirnull
+  let commandline = "'[,']!" . s:GPGCommand . " --quiet --ignore-mdc-error --decrypt " . s:stderrredirnull
   call s:GPGDebug(1, "command: " . commandline)
   let &shellredir = s:shellredir
   let &shell = s:shell

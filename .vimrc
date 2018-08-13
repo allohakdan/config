@@ -396,6 +396,7 @@ let g:GPGExecutable=system("which gpg")[:-2]
 " endif
 let g:GPGPreferSymmetric = 1
 let g:GPGPreferArmor = 1
+" let g:GPGDebugLevel = 1
 endif
 
 " Smooth Scrolling for page up and page down
