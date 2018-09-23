@@ -1,2 +1,3 @@
+echo "Inflictor"
 source_if_exists ~/.dan/.bashrc_jfrog
 source_if_exists ~/.dan/.bashrc_aws
