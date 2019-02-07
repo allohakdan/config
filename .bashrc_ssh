@@ -39,3 +39,32 @@ ssh-key-decrypt() {
     echo "Generating public key"
     ssh-keygen -y -f ${KEYFILE%.asc} > ${KEYFILE%.asc}.pub
 }
+
+ssh-key-encrypt() {
+# Encrypt an ssh key using gpg for storage
+# $1 - file to decrypt,
+    KEYFILE=$1
+    # Check that input file exists
+    if [ ! -s $KEYFILE ]; then
+        echo "Input file does not exist"
+        return 0
+    fi
+    # check if asc file exist
+    if [ -s ${KEYFILE}.asc ]; then
+        echo "File has already been encrypted"
+        return 0
+    fi
+
+    echo "encrypting"
+    gpg -a -c -q $KEYFILE > ${KEYFILE}.asc
+    chmod 700 ${KEYFILE}.asc
+
+    # Make sure file was created successfully
+    if [ ! -s ${KEYFILE}.asc ]; then
+        echo "encryption Failed!"
+        return 0
+    fi
+}
+
+
+
