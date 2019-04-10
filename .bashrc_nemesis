@@ -1,2 +1,5 @@
 source_if_exists ~/.dan/.bashrc_jfrog
 source_if_exists ~/.dan/.bashrc_aws
+
+export executor=10.120.20.217
+export inflictor=10.120.20.230
