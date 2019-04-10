@@ -20,18 +20,18 @@ python:
 
 pylint:
   Linux: apt-get install pylint
-  Darwin: $(port_installed py27-pylint) || { port install py27-pylint; port select --set pylint py27; }
+  Darwin: $(port_installed py27-pylint) || { port install py27-pylint; port select --set pylint pylint27; }
 
 pyflakes:
   Linux: apt-get install python-flake8
-  Darwin: $(port_installed py27-flake8) || { port install py27-flake8; port select --set flake8 flake827; }
+  Darwin: $(port_installed py27-flake8) || { port install py27-flake8; port select --set flake8 flake8-27; }
 
 pip:
   Linux: apt-get install python-pip
   Darwin: $(port_installed py27-pip) || { port install py27-pip; port select --set pip pip27; }
 
 gpg:
-  Darwin: $(port_installed gnupg) || port install gnupg
+  Darwin: $(port_installed gnupg) || port install gnupg2
 
 watch:
   Darwin: $(port_installed watch) || port install watch
