@@ -73,6 +73,9 @@ upgradegpg() {
     fi
 }
 
+# Init synckey script
+source_if_exists $MINE/.bashrc_sync
+
 # Run a HTTP server from the current directory.
 # Optionally specify a port to host on (default is 8000)
 httpserver() {
