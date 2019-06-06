@@ -4,6 +4,10 @@ if [ -a "/opt/local/bin/vim" ]; then
 else
     alias vim="vim -u $MINE/.vimrc -p"
 fi
+
+if [ `uname` = "Darwin" ]; then
+    alias mvim="/Applications/MacVim.app/Contents/bin/mvim -u $MINE/.vimrc -p"
+fi
 export EDITOR=vim
 
 # Create the vim backup directory if it does not exist

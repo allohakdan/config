@@ -1,6 +1,6 @@
 echo "The bridge is yours, Captain."
 PATH=/Developer/adt-bundle-mac-x86_64-20131030/sdk/platform-tools:$PATH
-alias mvim='mvim -u /Users/dan.brooks/.dan/.vimrc'
+#alias mvim='mvim -u /Users/dan.brooks/.dan/.vimrc'
 unset GPG_AGENT_INFO
 export GPG_TTY='tty'
 source_if_exists ~/.dan/.bashrc_jfrog
@@ -13,3 +13,5 @@ penguinrestart() {
 sharesynergy() {
      synergys -f --debug WARNING --config ~/.dan/.synergy.conf
  }
+
+export HQPUGET=10.110.22.242
