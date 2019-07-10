@@ -10,6 +10,9 @@ penguinrestart() {
     supervisorctl -s http://penguinbox.local -u pi -p snoopy22 restart penguins
 }
 
+tvrestart() {
+    supervisorctl -s http://penguintv.local -u towlie -p youreatowel restart penguins
+}
 sharesynergy() {
      synergys -f --debug WARNING --config ~/.dan/.synergy.conf
  }
