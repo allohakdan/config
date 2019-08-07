@@ -465,6 +465,10 @@ if has("gui_running")
 endif
 
 
+" Disable GitGutter for asc files (they are encrypted so detecting changes in
+" the repo won't work!)
+au BufReadPost,BufNewFile *.asc              let g:gitgutter_enabled = 0
+
 "*********************************************************************
 "*********************************************************************
 "               F U N C T I O N      D E F I N A T I O N S
