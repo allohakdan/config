@@ -17,4 +17,8 @@ sharesynergy() {
      synergys -f --debug WARNING --config ~/.dan/.synergy.conf
  }
 
+sshdefiant() {
+    ssh dan@defiant.local -Y
+}
+
 export HQPUGET=10.110.22.242
