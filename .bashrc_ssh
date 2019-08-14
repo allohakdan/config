@@ -22,7 +22,7 @@ ssh-key-decrypt() {
     fi
 
     echo "Decrypting"
-    gpg -d --passphrase $PASSWD --no-use-agent -q $KEYFILE > ${KEYFILE%.asc}
+    gpg -d --no-mdc-warning --ignore-mdc-error --passphrase $PASSWD --no-use-agent -q $KEYFILE > ${KEYFILE%.asc}
     chmod 700 ${KEYFILE%.asc}
 
     # Make sure file was created successfully
