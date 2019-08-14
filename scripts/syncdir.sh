@@ -20,6 +20,10 @@ syncdir() {
     if [[ ! -d .git ]]; then
         echo ".:. Initializing Git Repo: $REPO"
         $GITCMD clone $REPO .
+        if [ $? -ne 0 ]; then
+            echo "Initialization with Git Clone failed!"
+            return 1
+        fi
     fi
 
     # Hide any local changes
