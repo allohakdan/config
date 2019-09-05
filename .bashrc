@@ -67,6 +67,10 @@ upgradegpg() {
         echo " - You may be asked to enter your passphrase several times" 
         echo " - Say (y)es when asked to overwrite file. You data is safe in a backup file."
         gpg -q --no-mdc-warning --ignore-mdc-error -d "$1" | gpg --symmetric -a --output "$1"
+        echo "New Raw file looks like:"
+        cat $1
+        echo "Backup file location (please delete): $BACKUPNAME"
+
     else
         # Copy failed
         echo "Copy failed!"
