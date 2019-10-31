@@ -36,10 +36,14 @@ exec_if_exists() {
     fi
 }
 
-# decode gpg files into temporary buffer
+# write, decode, and edit gpg files
 dgpg() {
-    gpg -q --no-mdc-warning --ignore-mdc-error -d "$1" | less
+    $MINE/scripts/dgpg.py "$@"
 }
+
+# dgpg() {
+#     gpg -q --no-mdc-warning --ignore-mdc-error -d "$1" | less
+# }
 
 upgradegpg() {
     # USAGE: upgradegpg /path/to/my/file.asc
