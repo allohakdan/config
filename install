@@ -1,0 +1,1 @@
+sudo apt-get install openssh-server git && git clone https://github.com/allohakdan/config.git .dan
