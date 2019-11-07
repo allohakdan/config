@@ -5,6 +5,7 @@ git:
 vim:
   Linux: apt-get install vim
     Xenial: apt-get install vim-gtk
+    Bionic: apt-get install vim-gtk
     Raspbian8: apt-get install vim-nox
   Darwin: $(port_installed vim) || port install vim +python27
 
@@ -46,3 +47,6 @@ iftop:
 
 ctags:
   Linux: apt-get install exuberant-ctags
+
+net-tools:
+  Bionic: apt-get install net-tools
