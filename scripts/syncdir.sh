@@ -47,7 +47,7 @@ syncdir() {
     if [ `$GITCMD rev-parse master` != `$GITCMD rev-parse origin/master` ]; then
         echo "ERROR: master and origin/master are out of sync! Please correct manually!"
         popd
-        exit 1
+        return 1
     fi
 
     # Restore local changes
