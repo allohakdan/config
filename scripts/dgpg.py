@@ -54,7 +54,7 @@ class DGPG:
         if not self.__buffer_updated:
             print("No change to write.")
             return
-        with tempfile.NamedTemporaryFile(prefix="myfile", suffix=".tmp") as tf:
+        with tempfile.NamedTemporaryFile(suffix=".tmp") as tf:
             tf.write(self.__buffer)
             tf.flush()
             cmd = "gpg --batch --yes --symmetric --armor --passphrase-fd 0 --output %s %s" % (filepath, tf.name)
@@ -103,7 +103,7 @@ class DGPG:
         if not orig_buffer is None and not isinstance(orig_buffer, bytes):
             orig_buffer = orig_buffer.encode('ascii')
 
-        with tempfile.NamedTemporaryFile(prefix="myfile", suffix=".tmp") as tf:
+        with tempfile.NamedTemporaryFile(suffix=".tmp") as tf:
             if self.__buffer:
                 tf.write(self.__buffer.encode('ascii'))
                 tf.flush()
