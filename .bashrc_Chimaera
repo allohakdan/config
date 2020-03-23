@@ -22,3 +22,4 @@ sshdefiant() {
 }
 
 export HQPUGET=10.110.22.242
+export DEFIANT=10.130.20.210
