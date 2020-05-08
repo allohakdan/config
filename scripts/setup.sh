@@ -17,6 +17,10 @@ if grep -Fq chdan ~/.bashrc; then
     cat ~/.bashrc
 else
     echo "Installing chdan into .bashrc"
+    if [ "$(uname)" == "Darwin" ]; then
+        # Remove zsh warning in macos
+        echo "export BASH_SILENCE_DEPRECATION_WARNING=1" >> ~/.bashrc
+    fi
     echo "alias chdan='source ~/.dan/.bashrc'" >> ~/.bashrc
 fi
 

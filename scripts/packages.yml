@@ -50,3 +50,7 @@ ctags:
 
 net-tools:
   Bionic: apt-get install net-tools
+
+fwknop:
+  Darwin: $(port_installed fwknop-client) || port install fwknop-client
+  Bionic: apt-get install fwknop-client
