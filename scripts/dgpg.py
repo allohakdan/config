@@ -26,9 +26,9 @@ from subprocess import call, Popen, run, PIPE
 EDITOR = os.environ.get('EDITOR','vim')
 
 class DGPG:
-    def __init__(self):
-        self.__buffer = None  # holds decrypted content
-        self.__passwd = None  # holds password
+    def __init__(self, passwd=None):
+        self.__buffer = None    # holds decrypted content
+        self.__passwd = passwd  # holds password
         self.__buffer_updated = False  # Flag to determine if buffer has changed
 
     def read_passwd(self, confirm=False):
@@ -120,6 +120,10 @@ class DGPG:
         """ Show buffer contents using pager (less) """
         pydoc.pager(self.__buffer)
 
+    def get_contents(self):
+        """ For external use, such as auditing """
+        return(self.__buffer)
+    
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("file")
