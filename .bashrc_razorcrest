@@ -1,3 +1,16 @@
 echo "This is the way"
 source_if_exists ~/.dan/.bashrc_jfrog
 source_if_exists ~/.dan/.bashrc_aws
+
+chtri() {
+    echo "Loading aws and jfrog environment variables"
+    source ~/.dan/.bashrc_jfrog
+    source ~/.dan/.bashrc_aws
+}
+
+sshdefiant() {
+    ssh dan@defiant.local -Y
+}
+
+export HQPUGET=10.110.22.242
+export DEFIANT=10.130.20.210
