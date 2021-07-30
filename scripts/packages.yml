@@ -1,11 +1,13 @@
 git:
   Linux: apt-get install git-core
     Trusty: apt-get install git-core
+    Focal: apt-get install git-core
 
 vim:
   Linux: apt-get install vim
     Xenial: apt-get install vim-gtk
     Bionic: apt-get install vim-gtk
+    Focal: apt-get install vim-gtk
     Raspbian8: apt-get install vim-nox
   Darwin: $(port_installed vim) || port install vim +python27
 
@@ -25,10 +27,12 @@ pylint:
 
 pyflakes:
   Linux: apt-get install python-flake8
+    Focal: apt-get install python3-flake8
   Darwin: $(port_installed py27-flake8) || { port install py27-flake8; port select --set flake8 flake8-27; }
 
 pip:
   Linux: apt-get install python-pip
+    Focal: apt-get install python3-pip
   Darwin: $(port_installed py27-pip) || { port install py27-pip; port select --set pip pip27; }
 
 gpg:
