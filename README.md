@@ -34,3 +34,28 @@ Install other necesities by calling
 $ ~/.dan/scripts/setup.sh
 ```
 
+Restart terminal window, and run ``chdan``
+
+Decrypt SSH Keys
+
+```
+$ ssh-key-decrypt .dan/.ssh/id_rsa.keyname.asc
+```
+
+Optionally link SSH Directories
+
+```
+$ cd ~ && ln -s .dan/.ssh
+```
+
+Optionally link vimrc to home directory (for macvim)
+
+```
+$ cd ~ && ln -s .dan/.vimrc
+```
+
+On Linux - fix caps lock to escape system wide and permently
+
+```
+$ ./.dan/scripts/setup/fixcapslock.sh
+```
