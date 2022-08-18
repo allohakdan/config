@@ -1,0 +1,29 @@
+echo "The bridge is yours, Captain."
+PATH=/Developer/adt-bundle-mac-x86_64-20131030/sdk/platform-tools:$PATH
+#alias mvim='mvim -u /Users/dan.brooks/.dan/.vimrc'
+unset GPG_AGENT_INFO
+export GPG_TTY='tty'
+
+chtri() {
+    echo "Loading aws and jfrog environment variables"
+    source ~/.dan/.bashrc_jfrog
+    source ~/.dan/.bashrc_aws
+}
+
+penguinrestart() {
+    supervisorctl -s http://penguinbox.local -u pi -p snoopy22 restart penguins
+}
+
+tvrestart() {
+    supervisorctl -s http://penguintv.local -u towlie -p youreatowel restart penguins
+}
+sharesynergy() {
+     synergys -f --debug WARNING --config ~/.dan/.synergy.conf
+ }
+
+sshdefiant() {
+    ssh dan@defiant.local -Y
+}
+
+export HQPUGET=10.110.22.242
+export DEFIANT=10.130.20.210
