@@ -137,33 +137,36 @@ def main():
 
     dgpg = DGPG()
 
-    # Create a new file if it does not exist
-    if not os.path.isfile(filepath):
-        dgpg.editor()
-        dgpg.read_passwd(confirm=True)
-        dgpg.write_gpg_file(filepath)
-        return
-
-    # if file exists and user wants to edit, open with editor and write changes
-    elif args.edit:
-        dgpg.read_passwd()
-        success = dgpg.read_gpg_file(filepath)
-        if success:
+    try:
+        # Create a new file if it does not exist
+        if not os.path.isfile(filepath):
             dgpg.editor()
+            dgpg.read_passwd(confirm=True)
             dgpg.write_gpg_file(filepath)
-        else:
-            print("Bad passphrase")
-        return 
+            return
 
-    # Otherwise, just display the file contents
-    else:
-        dgpg.read_passwd()
-        success = dgpg.read_gpg_file(filepath)
-        if success:
-            dgpg.display()
+        # if file exists and user wants to edit, open with editor and write changes
+        elif args.edit:
+            dgpg.read_passwd()
+            success = dgpg.read_gpg_file(filepath)
+            if success:
+                dgpg.editor()
+                dgpg.write_gpg_file(filepath)
+            else:
+                print("Bad passphrase")
+            return 
+
+        # Otherwise, just display the file contents
         else:
-            print("Bad passphrase")
-        return
+            dgpg.read_passwd()
+            success = dgpg.read_gpg_file(filepath)
+            if success:
+                dgpg.display()
+            else:
+                print("Bad passphrase")
+            return
+    except KeyboardInterrupt:
+        print("\nCancelled")
         
 
 
