@@ -9,7 +9,7 @@ vim:
     Bionic: apt-get install vim-gtk
     Focal: apt-get install vim-gtk
     Raspbian8: apt-get install vim-nox
-  Darwin: $(port_installed vim) || port install vim +python27
+  Darwin: $(port_installed vim) || port install vim +python310
 
 tmux:
   Linux: apt-get install tmux
@@ -19,20 +19,20 @@ ssh:
   Linux: apt-get install ssh
 
 python:
-  Darwin: $(port_installed python27) || { port install python27; port select --set python python27; }
+  Darwin: $(port_installed python310) || { port install python310; port select --set python python310; }
 
 pylint:
   Linux: apt-get install pylint
-  Darwin: $(port_installed py27-pylint) || { port install py27-pylint; port select --set pylint pylint27; }
+  Darwin: $(port_installed py310-pylint) || { port install py310-pylint; port select --set pylint pylint310; }
 
 pyflakes:
-  Linux: apt-get install python-flake8
-    Focal: apt-get install python3-flake8
+  Linux: apt-get install py310-flake8
+    Focal: apt-get install py310-flake8
 
 pip:
-  Linux: apt-get install python-pip
-    Focal: apt-get install python3-pip
-  Darwin: $(port_installed py27-pip) || { port install py27-pip; port select --set pip pip27; }
+  Linux: apt-get install py310-pip
+    Focal: apt-get install py310-pip
+  Darwin: $(port_installed py310-pip) || { port install py310-pip; port select --set pip py310-pip; }
 
 gpg:
   Darwin: $(port_installed gnupg) || port install gnupg2
