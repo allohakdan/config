@@ -108,6 +108,7 @@ alias grep='grep --color=auto'
 #alias dl="$MINE/scripts/dl"
 alias rm='rm -i'
 alias cless="less -R" # Color Less
+alias latest='ls -Art | grep -v / | tail -n 1'
 
 # Vim editor settings
 source_if_exists $MINE/.bashrc_vim
