@@ -43,19 +43,25 @@ class FindMissingPassLabelCmd(Cmd):
         dgpg = DGPG()
         dgpg.read_passwd()
 
-        file_status = dict() #name(str): bool
+        file_tags = dict() #name(str): [str, str] or None
         for path in files:
             dgpg.read_gpg_file(path)
             print("........................")
             contents = dgpg.get_contents()
-            flag = True if "EMAIL:" in contents else False
-            print(path)
-            file_status[path] = True if "PASSWD:" in contents else False
+            file_tags[path] = None
+            tags = ["EMAIL:", "PASS:", "PASSWD:", "USER:"]
+            found_tags = [tag for tag in tags if tag in contents]
+            if found_tags:
+                file_tags[path] = found_tags
+            print(path, found_tags)
 
         print("\n\n\n")
-        print("FILES PASSING:")
-        for name in [key for key,value in file_status.items() if value]:
-            print(name)
+        print("FILES Containing Tags:")
+        for filename, keys in file_tags.items():
+            if keys is not None:
+                print(filename, keys)
+#         for name in [key for key,value in file_status.items() if value]:
+#             print(name)
 
 
 def main():
