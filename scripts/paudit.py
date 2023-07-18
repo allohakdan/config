@@ -9,16 +9,16 @@ import os
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 from dgpg import DGPG
-
 class Cmd(object):
     name = None
     description = None
     def __init__(self):
-        self._cmd_parser = None
+        assert(self.name is not None)
+        assert(self.description is not None)
 
-    def _add_to_parser(self, subparser):
-        self._cmd_parser = subparser.add_parser(self.name, help=self.description)
-        self.setup_parser(self._cmd_parser)
+    def add_to_parser(self, subparser):
+        """ Receives a subparser, should return a subparser """
+        self.setup_parser(subparser.add_parser(self.name, help=self.description))
         return subparser
 
     def setup_parser(self, parser):
@@ -70,11 +70,13 @@ def main():
     parser.add_argument("--r", "--recursive", dest="recursive", action="store_true", help="recurse")
     subparser = parser.add_subparsers(dest="cmd", metavar="Command")
 
-    # build list of commands
-    cmds = dict()
-    for cmd_class in Cmd.__subclasses__():
-        cmds[cmd_class.name] = cmd_class()
-        cmds[cmd_class.name]._add_to_parser(subparser)
+    # Load Commands
+    cmd_classes = Cmd.__subclasses__()
+    commands = {cls.name: cls() for cls in cmd_classes}
+    for cmd in commands.values():
+        cmd.add_to_parser(subparser)
+
+
 
     args = parser.parse_args()
 
@@ -87,10 +89,10 @@ def main():
 
     # Run the specified command
     name = args.cmd
-    if name not in cmds.keys():
+    if name not in commands.keys():
         parser.print_help()
     else:
-        cmds[name].cmd(files, args)
+        commands[args.cmd].cmd(files, args)
 
 
 if __name__ == "__main__":
