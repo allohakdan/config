@@ -3,6 +3,7 @@
 import argparse
 import glob
 import os
+import re
 
 
 # Find Script Directory
@@ -34,6 +35,43 @@ class ListFilesCmd(Cmd):
     def cmd(self, files, args):
         for f in files:
             print(f)
+
+class DetectNotGPG(Cmd):
+    name = "detect_not_gpg"
+    description = "Detects files that are not GPG ascii encrypted"
+
+    def cmd(self, files, args):
+        bad_files = dict()
+        for path in files:
+            # Skip if path is a directory
+            if os.path.isdir(path):
+                continue
+            # Follow symlinks
+            if os.path.islink(path):
+                path = os.path.realpath(path)
+            # Check for empty files
+            if not os.path.getsize(path) > 0:
+                bad_files[path] = ["<<< EMPTY FILE >>>"]
+                continue
+            # Read the contents
+            try:
+                with open(path, "r") as f:
+                    contents = f.readlines()
+            except UnicodeDecodeError:
+                bad_files[path] = ["<<< BYTES FOUND >>>"]
+                continue
+
+            if re.match("^\-+BEGIN PGP MESSAGE\-+.*", str(contents[0])) is None:
+                bad_files[path] = contents
+
+
+        if bad_files:
+            print("Found non GPG Files:")
+            for name, contents in bad_files.items():
+                print("-", name)
+                for line in contents:
+                    print(str(line))
+                print()
 
 class FindMissingPassLabelCmd(Cmd):
     name = "find_missing_passwd_labels"
@@ -83,9 +121,11 @@ def main():
     # Collect list of encrypted files
     path = os.path.abspath(os.path.expanduser(args.directory))
     if args.recursive:
-        files = glob.glob(os.path.join(path, "**/**.asc"), recursive=True)
+        files = glob.glob(os.path.join(path, "**/**"), recursive=True)
+#         files = glob.glob(os.path.join(path, "**/**.asc"), recursive=True)
     else:
-        files = glob.glob(os.path.join(path, "**.asc"))
+#         files = glob.glob(os.path.join(path, "**.asc"))
+        files = glob.glob(os.path.join(path, "**"))
 
     # Run the specified command
     name = args.cmd
