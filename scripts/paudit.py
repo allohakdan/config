@@ -43,6 +43,9 @@ class DetectNotGPG(Cmd):
     def cmd(self, files, args):
         bad_files = dict()
         for path in files:
+            # Skip certain files
+            if os.path.basename(path) in ["README.md"]:
+                continue
             # Skip if path is a directory
             if os.path.isdir(path):
                 continue
