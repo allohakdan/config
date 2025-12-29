@@ -5,6 +5,9 @@ import glob
 import os
 import re
 
+## TODO
+## FindDuplicate - create a database of strings that appear in multiple files
+## Search - search encrypted files for a string
 
 # Find Script Directory
 DIR = os.path.dirname(os.path.abspath(__file__))
@@ -103,6 +106,36 @@ class FindMissingPassLabelCmd(Cmd):
                 print(filename, keys)
 #         for name in [key for key,value in file_status.items() if value]:
 #             print(name)
+
+
+class SearchForStringCmd(Cmd):
+    name = "search_for_string"
+    description = "Search for a string in files - string is entered at runtime"
+
+    def cmd(self, files, args):
+        if args.ignore_case:
+            print("Ignoring Case")
+        pattern = input("Search String: ")
+
+        dgpg = DGPG()
+        dgpg.read_passwd()
+
+
+        for path in files:
+            dgpg.read_gpg_file(path, hide_errors=True)
+            contents = dgpg.get_contents().split()
+            if args.ignore_case:
+                if pattern.lower() in [c.lower() for c in contents]:
+                    print(path)
+            else:
+                if pattern in contents:
+                    print(path)
+            
+
+    def setup_parser(self, parser):
+        parser.add_argument("-i", "--ignore-case", action="store_true", help="ignore case")
+
+
 
 
 def main():
