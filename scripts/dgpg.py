@@ -21,7 +21,7 @@ import sys, tempfile, os
 import time
 import pydoc
 import shlex
-from subprocess import call, Popen, run, PIPE
+from subprocess import call, Popen, run, PIPE, DEVNULL
 
 EDITOR = os.environ.get('EDITOR','vim')
 
@@ -78,14 +78,17 @@ class DGPG:
             return
         print("File updated successfully.")
 
-    def read_gpg_file(self, filepath):
+    def read_gpg_file(self, filepath, hide_errors=None):
         """ Attempts to read an input file.
         Saves contents inside buffer made by class
         returns True if successful, Flase if decryption failed
         """
         # https://stackoverflow.com/a/165662
         cmd = "gpg --no-mdc-warning --ignore-mdc-error --batch --decrypt --passphrase-fd 0 %s" % (filepath)
-        p = run(shlex.split(cmd), stdout=PIPE, input=self.__passwd, encoding='ascii')
+        if hide_errors:
+            p = run(shlex.split(cmd), stdout=PIPE, stderr=DEVNULL, input=self.__passwd, encoding='ascii')
+        else:
+            p = run(shlex.split(cmd), stdout=PIPE, input=self.__passwd, encoding='ascii')
         # Detect decryption error
         if p.returncode != 0:
             return False
