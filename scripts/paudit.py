@@ -208,7 +208,7 @@ class ParseFileCmd(Cmd):
 
 class SearchForStringCmd(Cmd):
     name = "search_for_string"
-    description = "Search for a string in files - string is entered at runtime"
+    description = "Search for a string in files ignoring tags - string is entered at runtime"
 
     def cmd(self, files, args):
         if args.ignore_case:
@@ -228,12 +228,37 @@ class SearchForStringCmd(Cmd):
             else:
                 if pattern in contents:
                     print(path)
-            
 
     def setup_parser(self, parser):
         parser.add_argument("-i", "--ignore-case", action="store_true", help="ignore case")
-        parser.add_argument("-o", "--ignore-old", action="store_true", help="ignore instances marked OLD")
 
+
+
+class PasswordSearchCmd(Cmd):
+    name = "passwd_search"
+    description = "Search PASS and TEXT for pattern"
+
+    def cmd(self, files, args):
+        pattern = input("Search String: ")
+
+        dgpg = DGPG()
+        dgpg.read_passwd()
+
+        for path in files:
+            dgpg.read_gpg_file(path, hide_errors=True)
+            contents = dgpg.get_contents()
+            data = parse_file(contents)
+
+            for entry in data:
+                # Check if tag PASS is set and matches pattern
+                if "PASS" in entry["TAGS"]:
+                    if entry["TAGS"]["PASS"] == pattern:
+                        print("FOUND PASS", path)
+                # if PASS is not defined, check to see if it exists in text
+                else:
+                    for line in entry["TEXT"]:
+                        if pattern in line:
+                            print("FOUND TEXT", path)
 
 
 
