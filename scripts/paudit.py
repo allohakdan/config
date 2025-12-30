@@ -6,6 +6,8 @@ import os
 import re
 
 ## TODO
+## FileParser - Parse out tags and create dictionary object representation of file
+##
 ## FindDuplicate - create a database of strings that appear in multiple files
 ## Search - search encrypted files for a string
 
@@ -13,6 +15,69 @@ import re
 DIR = os.path.dirname(os.path.abspath(__file__))
 
 from dgpg import DGPG
+
+KEYWORDS = ["SITE", 
+            "DESC", 
+            "USER", 
+            "PASS", 
+            "MAIL", 
+            "LINK", 
+            "PHONE", 
+            "OLD", 
+            "PIN", 
+            "NOTE"]
+
+# Keyword list with appended ':'
+# needs to be a tuple to be compatible with str.startswith()
+KEYWORD_TOKENS = tuple([w + ":" for w in KEYWORDS])
+
+def parse_file(file_contents):
+    """
+    contents(str) -  file contents as a single string
+    returns(dict) - "TAGS":
+                        "SITE": str
+                        "MAIL": str
+                        "USER": str
+                        "PASS": str
+                        "OLD": [str, str, str...]
+    """
+    output = list()
+    #output = [{"tags": {"SITE": str, "DESC": str}
+    #           "text": [line1, line2, line3]},
+    #          {"tags":
+    #           "text":
+
+    # Split file contents into entries by dividers ---- (at least 4 or longer).
+    # If no dividers are found, returns a list with single item
+    entries = re.split("\-\-\-\-\-*", file_contents)
+
+    for entry_text in entries:
+        entry_data = {"TAGS": dict(), "TEXT": list()}
+        # Split the entry into individual lines
+        lines = [line.strip() for line in entry_text.split("\n")]
+        # Each line is either a tag (starts with a keyword) or text
+        for line in lines:
+            if line.startswith(KEYWORD_TOKENS):
+                key, value = line.split(":", 1)  # If there are additional ':' in the line, ignore them
+                if key not in entry_data["TAGS"]:
+                    entry_data["TAGS"][key] = value.strip()
+                else:
+                    # If more than one line is found with the same tag, turn it into a list
+                    if not isinstance(entry_data["TAGS"][key], list):
+                        first_value = entry_data["TAGS"][key]
+                        entry_data["TAGS"][key] = [first_value]
+                    # add the item to the list
+                    entry_data["TAGS"][key].append(value.strip())
+
+            elif line:
+                # If it is not a blank line but no tag is found, add it as text
+                entry_data["TEXT"].append(line)
+        output.append(entry_data)
+    return output
+
+
+
+
 class Cmd(object):
     name = None
     description = None
@@ -107,6 +172,28 @@ class FindMissingPassLabelCmd(Cmd):
 #         for name in [key for key,value in file_status.items() if value]:
 #             print(name)
 
+class ParseFileCmd(Cmd):
+    name = "parse"
+    description = "Parse a file"
+
+    def cmd(self, files, args):
+        dgpg = DGPG()
+        dgpg.read_passwd()
+
+        for path in files:
+            if path.endswith(args.file):
+                print("Found matching file:", path)
+                dgpg.read_gpg_file(path, hide_errors=True)
+                contents = dgpg.get_contents()
+                data = parse_file(contents)
+                # Pretty print the data by abusing json
+                import json
+                print(json.dumps(data, indent=2))
+                print("----")
+
+
+    def setup_parser(self, parser):
+        parser.add_argument("file", type=str, help="file to parse")
 
 class SearchForStringCmd(Cmd):
     name = "search_for_string"
@@ -123,9 +210,9 @@ class SearchForStringCmd(Cmd):
 
         for path in files:
             dgpg.read_gpg_file(path, hide_errors=True)
-            contents = dgpg.get_contents().split()
+            contents = dgpg.get_contents()
             if args.ignore_case:
-                if pattern.lower() in [c.lower() for c in contents]:
+                if pattern.lower() in [c.lower() for c in contents.split()]:
                     print(path)
             else:
                 if pattern in contents:
@@ -134,6 +221,7 @@ class SearchForStringCmd(Cmd):
 
     def setup_parser(self, parser):
         parser.add_argument("-i", "--ignore-case", action="store_true", help="ignore case")
+        parser.add_argument("-o", "--ignore-old", action="store_true", help="ignore instances marked OLD")
 
 
 
