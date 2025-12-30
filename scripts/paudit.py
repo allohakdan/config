@@ -53,24 +53,35 @@ def parse_file(file_contents):
 
     for entry_text in entries:
         entry_data = {"TAGS": dict(), "TEXT": list()}
+
         # Split the entry into individual lines
         lines = [line.strip() for line in entry_text.split("\n")]
+
         # Each line is either a tag (starts with a keyword) or text
         for line in lines:
-            if line.startswith(KEYWORD_TOKENS):
-                key, value = line.split(":", 1)  # If there are additional ':' in the line, ignore them
+
+            # Check if this is a TAG (starts with a keyword)
+            if line.upper().startswith(KEYWORD_TOKENS):
+
+                # Split the line into the KEY: VALUE pair
+                # If there are additional ':' in the line, ignore them
+                key, value = line.split(":", 1)  
+
+                # Add the KEY:VALUE to the dictionary
                 if key not in entry_data["TAGS"]:
                     entry_data["TAGS"][key] = value.strip()
+
                 else:
                     # If more than one line is found with the same tag, turn it into a list
                     if not isinstance(entry_data["TAGS"][key], list):
                         first_value = entry_data["TAGS"][key]
                         entry_data["TAGS"][key] = [first_value]
-                    # add the item to the list
+
+                    # add the VALUE to the list for the KEY
                     entry_data["TAGS"][key].append(value.strip())
 
             elif line:
-                # If it is not a blank line but no tag is found, add it as text
+                # If not TAG is found and it is not a blank line, add it as text
                 entry_data["TEXT"].append(line)
         output.append(entry_data)
     return output
@@ -189,7 +200,7 @@ class ParseFileCmd(Cmd):
                 # Pretty print the data by abusing json
                 import json
                 print(json.dumps(data, indent=2))
-                print("----")
+                print("\n")
 
 
     def setup_parser(self, parser):
