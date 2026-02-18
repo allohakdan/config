@@ -1,5 +1,4 @@
 LIB_KEESE=~/.keese
-#LIB_KEESE=~/Source/keese
 
 source_if_exists() {
 # First argument is file to try to source, remaining arguments are passed in
@@ -8,7 +7,7 @@ source_if_exists() {
     fi
 }
 
-echo "Loading Keese Tools"
+#echo "Loading Keese Tools"
 source_if_exists $LIB_KEESE/dgpg/dgpg.sh
 source_if_exists $LIB_KEESE/synckeys/synckeys.sh
 source_if_exists $LIB_KEESE/phrase_generator/phrase_generator.sh
