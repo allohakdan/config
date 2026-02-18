@@ -36,53 +36,8 @@ exec_if_exists() {
     fi
 }
 
-# write, decode, and edit gpg files
-dgpg() {
-    $MINE/scripts/dgpg.py "$@"
-}
-
-# dgpg() {
-#     gpg -q --no-mdc-warning --ignore-mdc-error -d "$1" | less
-# }
-
-upgradegpg() {
-    # USAGE: upgradegpg /path/to/my/file.asc
-    #
-    # Upgrade gpg secret files that are old. 
-    # Makes a backup of the file by prefixing the file name with "OLD."
-    # Then, decrypts the current file, and re-encrypts it cleanly
-    FILEDIR=`dirname "$1"`
-    BACKUPNAME=$FILEDIR/"OLD."`basename "$1"`
-
-    echo "Backing up $1"
-    echo "        to $BACKUPNAME"
-
-    if [ -f "$BACKUPNAME" ]; then
-        # Backup already exists, fail!
-        echo "ERROR: Backup already exists!"
-        return 1
-    fi
-    echo "Copying"
-    cp "$1" "$BACKUPNAME"
-    if cmp --silent "$1" "$BACKUPNAME"; then
-        # Copy was a success, migrate the file!
-        echo "Backup created successfully."
-        echo "Upgrading encryption..."
-        echo " - You may be asked to enter your passphrase several times" 
-        echo " - Say (y)es when asked to overwrite file. You data is safe in a backup file."
-        gpg -q --no-mdc-warning --ignore-mdc-error -d "$1" | gpg --symmetric -a --output "$1"
-        echo "New Raw file looks like:"
-        cat $1
-        echo "Backup file location (please delete): $BACKUPNAME"
-
-    else
-        # Copy failed
-        echo "Copy failed!"
-    fi
-}
-
-# Init synckey script
-source_if_exists $MINE/.bashrc_sync
+# To install keese and key files, follow instructions in keese README
+source_if_exists $MINE/.bashrc_keese
 
 # Run a HTTP server from the current directory.
 # Optionally specify a port to host on (default is 8000)
