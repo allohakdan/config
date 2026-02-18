@@ -1,5 +1,0 @@
-
-synckeys() {
-    source $MINE/scripts/syncdir.sh
-    syncdir git@bitbucket.org:mrdanbrooks/llaves.git ~/mis_llaves asc
-}
